@@ -1,0 +1,57 @@
+@extends('site.layouts.app')
+
+@section('content-site')
+<div class="content">
+    <div class="container">
+            <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+
+                    <input type="hidden" name="token" value="{{ $token }}">
+
+                    <div class="form-group">
+                        <label for="email" class="control-label">{{ __('E-Mail Address') }}</label>
+
+                        <div>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="control-label">{{ __('Password') }}</label>
+
+                        <div>
+                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete="new-password">
+
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password-confirm" class="form-control">{{ __('Confirm Password') }}</label>
+
+                        <div class="">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Reset Password') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+    </div>
+</div>
+@endsection
