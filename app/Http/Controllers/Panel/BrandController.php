@@ -12,10 +12,11 @@ class BrandController extends Controller
 {
 
     private $brand;
+    private $totalPage = 2;
 
     public function __construct(Brand $brand)
     {
-        $this->brand = $brand;
+        $this->brand = $brand;        
     }
 
     /**
@@ -29,7 +30,7 @@ class BrandController extends Controller
 
         $dataForm = $request->all();
 
-        $brands = $this->brand->paginate(20);
+        $brands = $this->brand->paginate($this->totalPage);
 
         
 
@@ -45,7 +46,7 @@ class BrandController extends Controller
     {
         $title = "Cadastrar Novo Avião";        
 
-        return view('panel.brands.create', compact('title', 'brands'));        
+        return view('panel.brands.create-edit', compact('title', 'brands'));        
     }
 
     /**
@@ -102,7 +103,7 @@ class BrandController extends Controller
 
         $title = "Edita Marca {$brand->name}";
 
-        return view('panel.brands.edit', compact('title', 'brand'));        
+        return view('panel.brands.create-edit', compact('title', 'brand'));        
     }
 
     /**
@@ -143,5 +144,19 @@ class BrandController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+
+        
+
+        $brands = $this->brand->search($request->key_search, $this->totalPage);
+
+        $title = "Brands, filtros para: {$request->key_search}";         
+
+        $campoBusca = $request->key_search;
+
+        return view('panel.brands.index', compact('title', 'brands', 'campoBusca'));        
     }
 }

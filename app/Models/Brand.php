@@ -19,5 +19,12 @@ class Brand extends Model
         'password', 'remember_token',
     ];
 
+    public function search($keySearch, $totalPage = 10)
+    {   
+
+        return $this->where('name', 'LIKE', "%{$keySearch}%")
+                    ->paginate($totalPage);
+    }
+
     
 }

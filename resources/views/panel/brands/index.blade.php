@@ -21,6 +21,20 @@
             <button class="btn btn-search">Pesquisar</button>
         {!! Form::close() !!} --}}
 
+        <form class="" action="{{route('brands.search')}}" method="POST">
+            {!! csrf_field() !!}
+            <div class="row">
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="key_search" placeholder="O que deseja encontrar?">
+                </div>    
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-search">Pesquisar</button>
+                </div>
+                
+            </div>
+        </form>
+        
+
         @if(isset($dataForm['key_search']))
             <div class="alert alert-info">
                 <p>
