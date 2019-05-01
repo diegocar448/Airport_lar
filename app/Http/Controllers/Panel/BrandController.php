@@ -148,7 +148,7 @@ class BrandController extends Controller
 
     public function search(Request $request)
     {
-
+        $dataForm = $request->all();
         
 
         $brands = $this->brand->search($request->key_search, $this->totalPage);
@@ -157,6 +157,6 @@ class BrandController extends Controller
 
         $campoBusca = $request->key_search;
 
-        return view('panel.brands.index', compact('title', 'brands', 'campoBusca'));        
+        return view('panel.brands.index', compact('title', 'brands', 'campoBusca', 'dataForm'));        
     }
 }
