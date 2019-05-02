@@ -40,6 +40,13 @@
 					Marcas
 				</a>
 			</li>
+
+			<li>
+				<a href="{{route('planes.index')}}">
+					<i class="fa fa-plane"></i>
+					Marcas
+				</a>
+			</li>
 			
 		</ul>
 	</div>

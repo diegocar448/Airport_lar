@@ -9,7 +9,7 @@ class PanelController extends Controller
 {
     public function index()
     {
-        $title = "Porra";
+        $title = "Sistema de Agência de Turismo";
 
         return view('panel.home.index', compact("title"));
     }

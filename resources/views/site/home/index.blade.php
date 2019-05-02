@@ -56,10 +56,10 @@
             </div>
             <div class="col-md-7">
                 
-                <div class="banner-ctc-titulo-contenedor"><span>Que tal assinar na EspecializaTi Academy?</span></div>
+                <div class="banner-ctc-titulo-contenedor"><span>Viaje agora</span></div>
                 
                 <div>
-                    <p>ASSINE E TENHA ACESSO A TODOS OS NOSOS CURSOS DISPONÍVEL NA ESPECIALIZATI ACADEMY. MAIS BARATO QUE UM CAFÉ POR DIA!</p>
+                    <p>Voyage!</p>
                 </div>
             </div>
             <div class="col-md-2">
