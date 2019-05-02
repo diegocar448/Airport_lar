@@ -44,25 +44,10 @@
             </div>
         @endif
     </div>
-
-    {{-- <div class="messages">
-        @include('panel.includes.alerts')
-    </div> --}}
+ 
 
     <div class="messages">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif
-    </div>
-
-    <div class="messages">
-        @if(session('success'))
-            <div class="alert alert-error">
-                {{session('error')}}
-            </div>
-        @endif
+       @include('panel.includes.alerts')
     </div>
 
     <div class="class-btn-insert">

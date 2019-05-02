@@ -12,7 +12,7 @@ class BrandController extends Controller
 {
 
     private $brand;
-    private $totalPage = 2;
+    private $totalPage = 20;
 
     public function __construct(Brand $brand)
     {
