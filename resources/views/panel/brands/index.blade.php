@@ -83,7 +83,7 @@
                 <td>{{$brand->name}}</td>
                 <td>
                     <a href="{{route('brands.edit', $brand->id)}}" class="edit">Edit</a>
-                    <a href={{-- "{{route('brands.show', $brand->id)}} --}}" class="delete">View</a>
+                    <a href="{{route('brands.show', $brand->id)}}" class="delete">View</a>
                     <a href="{{-- {{route('brands.planes', $brand->id)}} --}}" class="edit">
                         <i class="fa fa-plane" aria-hidden="true"></i>
                     </a>
