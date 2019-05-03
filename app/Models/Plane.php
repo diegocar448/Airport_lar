@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Plane extends Model
 {
     protected $fillable = [
@@ -26,13 +27,30 @@ class Plane extends Model
                     ->paginate($totalPage);
     }
 
-    public function classes()
+    public function classes($className = null)
     {
-        return [            
-            'economy' => 'Economica',
+        $classes = [            
+            'economic' => 'Economica',
             'luxury' => 'Luxo',
-        ];
+        ];        
+        
+
+        if(!$className)
+        {
+            return $classes;
+        }
+
+        return $classes[$className];
+
     }
+
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+ 
 
 
 }
