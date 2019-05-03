@@ -11,7 +11,7 @@ use App\Http\Requests\PlaneStoreUpdateFormRequest;
 class PlaneController extends Controller
 {
     private $plane;
-    private $totalPage = 20;
+    private $totalPage = 2;
 
     public function __construct(Plane $plane)
     {
@@ -44,9 +44,11 @@ class PlaneController extends Controller
 
         $brands = Brand::get();
 
-        $classes = $this->plane->classes();       
+        $classes = $this->plane->classes(); 
+        
+        $plane = null;
 
-        return view('panel.planes.create', compact('title', 'classes', 'brands'));
+        return view('panel.planes.create', compact('title', 'classes', 'brands', 'plane'));
     }
 
     /**
@@ -148,5 +150,31 @@ class PlaneController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function search(Request $request)
+    {
+
+        $dataForm = $request->except(['_token']);
+
+        $keySearch = $request->key_search;
+
+        $title = "Resultados de aviões para: {$keySearch}";
+
+        $planes = $this->plane->search($keySearch, $this->totalPage);
+
+        $campoBusca = $request->key_search;
+
+        $brands = Brand::get();
+
+        $classes = $this->plane->classes();  
+
+        $plane = null;
+
+       
+
+        return view('panel.planes.index', compact('title', 'planes', 'dataForm', 'campoBusca', 'classes', 'brands', 'plane'));
+
     }
 }

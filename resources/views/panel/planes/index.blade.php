@@ -16,7 +16,7 @@
 
     <div class="form-search">        
 
-        {{-- <form class="" action="{{route('planes.search')}}" method="POST">
+        <form class="" action="{{route('planes.search')}}" method="POST">
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
@@ -27,7 +27,7 @@
                 </div>
                 
             </div>
-        </form> --}}
+        </form>
         
 
         @if(isset($dataForm['key_search']))

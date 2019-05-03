@@ -20,12 +20,7 @@ class Plane extends Model
         'password', 'remember_token',
     ];
 
-    public function search($keySearch, $totalPage = 10)
-    {   
-
-        return $this->where('name', 'LIKE', "%{$keySearch}%")
-                    ->paginate($totalPage);
-    }
+    
 
     public function classes($className = null)
     {
@@ -50,6 +45,17 @@ class Plane extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    public function search($keySearch, $totalPage)
+    {   
+
+        return $this->where('id', $keySearch)
+                    ->orWhere('qty_passengers', $keySearch)
+                    ->orWhere('class', $keySearch)
+                    ->paginate($totalPage);
+    }
+
+
+    
  
 
 
