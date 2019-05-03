@@ -44,7 +44,7 @@
 			<li>
 				<a href="{{route('planes.index')}}">
 					<i class="fa fa-plane"></i>
-					Marcas
+					Aviões
 				</a>
 			</li>
 			

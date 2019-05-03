@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Panel;
 
+use App\Models\Brand;
+use App\Models\Plane;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Plane;
 
 class PlaneController extends Controller
 {
@@ -38,7 +39,13 @@ class PlaneController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Cadastra Novo Avião";
+
+        $brands = Brand::get();
+
+        $classes = $this->plane->classes();
+
+        return view('panel.planes.create', compact('title', 'classes', 'brands'));
     }
 
     /**

@@ -26,5 +26,13 @@ class Plane extends Model
                     ->paginate($totalPage);
     }
 
+    public function classes()
+    {
+        return [            
+            'economy' => 'Economica',
+            'luxury' => 'Luxo',
+        ];
+    }
+
 
 }
