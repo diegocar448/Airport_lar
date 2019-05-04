@@ -19,12 +19,13 @@ class State extends Model
         'password', 'remember_token',
     ];
 
-    /* public function search($keySearch, $totalPage = 10)
+    public function search($keySearch)
     {   
 
         return $this->where('name', 'LIKE', "%{$keySearch}%")
-                    ->paginate($totalPage);
-    } */
+                    ->orWhere('initials', $keySearch)
+                    ->get();
+    }
 
   
 }
