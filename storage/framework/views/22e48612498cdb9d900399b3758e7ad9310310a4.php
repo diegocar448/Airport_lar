@@ -3,7 +3,7 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="bred">
-    <a href="" class="bred">Home  ></a>
+    <a href="<?php echo e(route('panel')); ?>" class="bred">Home  ></a>
     <a href="" class="bred">Brands</a>
 </div>
 
@@ -66,7 +66,7 @@
                 <td>
                     <a href="<?php echo e(route('brands.edit', $brand->id)); ?>" class="edit">Edit</a>
                     <a href="<?php echo e(route('brands.show', $brand->id)); ?>" class="delete">View</a>
-                    <a href="" class="edit">
+                    <a href="<?php echo e(route('brands.planes', $brand->id)); ?>" class="edit">
                         <i class="fa fa-plane" aria-hidden="true"></i>
                     </a>
                 </td>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plane;
 use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
@@ -24,6 +25,11 @@ class Brand extends Model
 
         return $this->where('name', 'LIKE', "%{$keySearch}%")
                     ->paginate($totalPage);
+    }
+
+    public function planes()
+    {
+        return $this->hasMany(Plane::class);
     }
 
     
