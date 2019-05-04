@@ -47,6 +47,13 @@
 					Aviões
 				</a>
 			</li>
+
+			<li>
+				<a href="{{route('states.index')}}">
+					<i class="fa fa-globe"></i>
+					Estados
+				</a>
+			</li>
 			
 		</ul>
 	</div>

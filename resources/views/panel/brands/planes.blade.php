@@ -35,10 +35,7 @@
                 <td>{{$plane->qty_passengers}}</td>
                 <td>
                     <a href="{{route('planes.edit', $plane->id)}}" class="edit">Edit</a>
-                    <a href="{{route('planes.show', $plane->id)}}" class="delete">View</a>
-                    <a href="{{-- {{route('planes.planes', $plane->id)}} --}}" class="edit">
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                    </a>
+                    <a href="{{route('planes.show', $plane->id)}}" class="delete">View</a>                  
                 </td>
             </tr>
         @empty

@@ -35,10 +35,7 @@
                 <td><?php echo e($plane->qty_passengers); ?></td>
                 <td>
                     <a href="<?php echo e(route('planes.edit', $plane->id)); ?>" class="edit">Edit</a>
-                    <a href="<?php echo e(route('planes.show', $plane->id)); ?>" class="delete">View</a>
-                    <a href="" class="edit">
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                    </a>
+                    <a href="<?php echo e(route('planes.show', $plane->id)); ?>" class="delete">View</a>                  
                 </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

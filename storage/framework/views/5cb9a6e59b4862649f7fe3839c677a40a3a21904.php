@@ -47,6 +47,13 @@
 					Aviões
 				</a>
 			</li>
+
+			<li>
+				<a href="<?php echo e(route('states.index')); ?>">
+					<i class="fa fa-globe"></i>
+					Estados
+				</a>
+			</li>
 			
 		</ul>
 	</div>
