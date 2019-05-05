@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
     protected $fillable = [
-        'name', 'initials', 'created_at', 'updated_at'
+       'id', 'name', 'initials', 'created_at', 'updated_at'
     ];
 
     /**
@@ -25,6 +26,11 @@ class State extends Model
         return $this->where('name', 'LIKE', "%{$keySearch}%")
                     ->orWhere('initials', $keySearch)
                     ->get();
+    }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
     }
 
   
