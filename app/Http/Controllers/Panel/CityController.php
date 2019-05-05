@@ -49,8 +49,10 @@ class CityController extends Controller
 
         $campoBusca = $request->key_search;
 
+        $totalCidades = count($state->cities);
+       
        
 
-        return view('panel.cities.index', compact('title', 'state', 'cities', 'dataForm', 'keySearch',  'campoBusca'));
+        return view('panel.cities.index', compact('title', 'state', 'cities', 'dataForm', 'keySearch',  'campoBusca', 'totalCidades'));
     }
 }
