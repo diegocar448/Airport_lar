@@ -10,7 +10,7 @@
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Cidades do Estado: (<?php echo e($cities->count()); ?> - <?php echo e($totalCidades); ?>) <strong><?php echo e($state->name); ?></strong></h1>
+    <h1 class="title-pg">Cidades do Estado: (<?php echo e($cities->count()); ?> - <?php echo e($totalCidades ?? $cities->total()); ?>) <strong><?php echo e($state->name); ?></strong></h1>
 </div>
 
 

@@ -10,7 +10,7 @@
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Cidades do Estado: ({{$cities->count()}} - {{$totalCidades}}) <strong>{{ $state->name }}</strong></h1>
+    <h1 class="title-pg">Cidades do Estado: ({{$cities->count()}} - {{$totalCidades ?? $cities->total()}}) <strong>{{ $state->name }}</strong></h1>
 </div>
 
 

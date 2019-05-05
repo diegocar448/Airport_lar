@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
     protected $fillable = [
-        'brand_id', 'qty_passengers', 'class', 'created_at', 'updated_at'
+        'id', 'brand_id', 'qty_passengers', 'class', 'created_at', 'updated_at'
     ];
 
     /**

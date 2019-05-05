@@ -54,6 +54,12 @@
 					Estados
 				</a>
 			</li>
+			<li>
+				<a href="<?php echo e(route('flights.index')); ?>">
+					<i class="fa fa-fighter-jet"></i>
+					Voos
+				</a>
+			</li>
 			
 		</ul>
 	</div>
