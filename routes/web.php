@@ -25,7 +25,7 @@ Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
     Route::any('states/search', 'StateController@search')->name('states.search');
     Route::get('states', 'StateController@index')->name('states.index');
 
-    Route::post('state/{initials}/cities/search', 'CityController@search')->name('states.cities.search');
+    Route::any('state/{initials}/cities/search', 'CityController@search')->name('states.cities.search');
     Route::get('state/{initials}/cities', 'CityController@index')->name('states.cities');
     
     Route::get('/', 'PanelController@index')->name('panel');

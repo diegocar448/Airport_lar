@@ -18,7 +18,7 @@
 
     <div class="form-search">        
 
-        {{-- <form class="" action="{{route('state.cities.search', $state->initials)}}" method="POST">
+        <form class="" action="{{route('states.cities.search', $state->initials)}}" method="POST">
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
@@ -29,12 +29,12 @@
                 </div>
                 
             </div>
-        </form>   --}}      
+        </form>        
 
         @if(isset($dataForm['key_search']))
             <div class="alert alert-info">
                 <p>
-                    <a href="{{route('cities.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    <a href="{{route('states.cities.search', $state->initials)}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     Resultados para: <strong>{{$dataForm['key_search']}}</strong>
                 </p>
             </div>

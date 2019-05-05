@@ -29,4 +29,28 @@ class CityController extends Controller
 
         return view('panel.cities.index', compact('state', 'title', 'cities', 'dataForm'));
     }
+
+    public function search(Request $request, $initials)
+    {
+
+        $state = State::where('initials', $initials)->get()->first();
+
+        if(!$state)
+        {
+            return redirect()->back();
+        }
+
+        $dataForm = $request->except('_token');        
+        $keySearch = $request->key_search;
+
+        $cities = $state->searchCities($keySearch, $this->totalPage);
+
+        $title = "Cidades do Estado: {$request->key_search}";         
+
+        $campoBusca = $request->key_search;
+
+       
+
+        return view('panel.cities.index', compact('title', 'state', 'cities', 'dataForm', 'keySearch',  'campoBusca'));
+    }
 }

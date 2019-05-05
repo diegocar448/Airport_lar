@@ -24,7 +24,7 @@ class City extends Model
     {   
 
         return $this->where('name', 'LIKE', "%{$keySearch}%")
-                    ->orWhere('initials', $keySearch)
+                    ->orWhere('state_id', $keySearch)
                     ->get();
     } */
 
@@ -32,6 +32,7 @@ class City extends Model
     {
         return $this->belongsTo(State::class);
     }
+    
 
 
     
