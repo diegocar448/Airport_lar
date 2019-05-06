@@ -87,7 +87,16 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        $flight = $this->flight->with(['origin', 'destination'])->find($id);
+
+        if(!$flight)
+        {
+            return redirect()->back();
+        }
+
+        $title = "Detalhe do voo {$flight->id}";
+
+        return view('panel.flights.show', compact('flight', 'title'));
     }
 
     /**
@@ -150,6 +159,10 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->flight->find($id)->delete();
+
+        return redirect()
+                        ->route('flights.index')
+                        ->with('success', 'Sucesso ao cadastrar');
     }
 }
