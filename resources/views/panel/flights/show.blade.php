@@ -41,7 +41,7 @@
         </li>
         <li>
             Preço Atual: <strong>R$ {{number_format($flight->price,2,',','.')}}</strong>
-        </li>
+        </li>      
         <li>
             Total de paradas: <strong>{{$flight->total_plots}}</strong>
         </li>

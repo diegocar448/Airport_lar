@@ -42,6 +42,16 @@
         <li>
             Preço Atual: <strong>R$ <?php echo e(number_format($flight->price,2,',','.')); ?></strong>
         </li>
+        <?php 
+             $vart = explode('-','2019-02-02-22-01-22');            
+
+             
+
+
+             echo $vart[2].'/'.$vart[1].'/'.$vart[0].' '.$vart[3].':'.$vart[4].':'.$vart[5]
+             
+
+        ?>
         <li>
             Total de paradas: <strong><?php echo e($flight->total_plots); ?></strong>
         </li>
