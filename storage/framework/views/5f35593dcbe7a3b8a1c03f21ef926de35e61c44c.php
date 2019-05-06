@@ -52,8 +52,8 @@
                     <a href=""><?php echo e($flight->destination->name); ?></a>
                 </td>                
                 <td><?php echo e($flight->qty_stops); ?></td>                
-                <td><?php echo e($flight->date); ?></td>                
-                <td><?php echo e($flight->hour_output); ?></td>                
+                <td><?php echo e(formatDateAndTime($flight->date)); ?></td>                
+                <td><?php echo e(formatDateAndTime($flight->hour_output, 'H:i')); ?></td>                
                 <td>
                     <a href="<?php echo e(route('flights.edit', $flight->id)); ?>" class="edit">Editar</a>                   
                     <a href="<?php echo e(route('flights.show', $flight->id)); ?>" class="delete">Apagar</a>                   

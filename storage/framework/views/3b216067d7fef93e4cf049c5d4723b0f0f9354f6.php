@@ -25,22 +25,22 @@
             Destino: <strong><?php echo e($flight->destination->name); ?></strong>
         </li>
         <li>
-            Data: <strong><?php echo e($flight->date); ?></strong>
+            Data: <strong><?php echo e(formatDateAndTime($flight->date)); ?></strong>
         </li>
         <li>
-            Duração: <strong><?php echo e($flight->time_duration); ?></strong>
+            Duração: <strong><?php echo e(formatDateAndTime($flight->time_duration, 'H:i')); ?></strong>
         </li>
         <li>
-            Saída: <strong><?php echo e($flight->hour_output); ?></strong>
+            Saída: <strong><?php echo e(formatDateAndTime($flight->hour_output, 'H:i')); ?></strong>
         </li>
         <li>
-            Chegada: <strong><?php echo e($flight->arrival_time); ?></strong>
+            Chegada: <strong><?php echo e(formatDateAndTime($flight->arrival_time, 'H:i')); ?></strong>
         </li>
         <li>
-            Preço Anterior: <strong><?php echo e($flight->old_price); ?></strong>
+            Preço Anterior: <strong>R$ <?php echo e(number_format($flight->old_price, 2,',','.')); ?></strong>
         </li>
         <li>
-            Preço Atual: <strong><?php echo e($flight->price); ?></strong>
+            Preço Atual: <strong>R$ <?php echo e(number_format($flight->price,2,',','.')); ?></strong>
         </li>
         <li>
             Total de paradas: <strong><?php echo e($flight->total_plots); ?></strong>
@@ -73,7 +73,7 @@
         <?php echo csrf_field(); ?>    
 
         <div class="form-group">
-            <button class="btn btn-danger">Deletar o voo</button>
+            <button class="btn btn-danger">Deletar o voo <?php echo e($flight->id); ?></button>
         </div>
 
     <form>

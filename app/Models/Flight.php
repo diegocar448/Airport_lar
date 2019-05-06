@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Airport;
 use Illuminate\Database\Eloquent\Model;
 
@@ -65,6 +66,12 @@ class Flight extends Model
     {
         return $this->belongsTo(Airport::class, 'airport_destination_id');
     }
+
+    /* //mutator
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    } */
 
 
 
