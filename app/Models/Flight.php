@@ -50,6 +50,8 @@ class Flight extends Model
         $data['hour_output'] = $request->hour_output;
         $data['arrival_time'] = $request->arrival_time;
         $data['total_plots'] = $request->total_plots;        
+        $data['description'] = $request->description;        
+        $data['qty_stops'] = $request->qty_stops;        
 
         return $this->create($data);
     }
@@ -63,6 +65,8 @@ class Flight extends Model
     {
         return $this->belongsTo(Airport::class, 'airport_destination_id');
     }
+
+
 
     
 }

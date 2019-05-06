@@ -30,7 +30,7 @@ class FlightController extends Controller
      */
     public function index(Request $request)
     {
-        $dataForm  =$request->except('_token');
+        $dataForm =$request->except('_token');
 
         $title = "Voos disponiveis";
 
@@ -97,8 +97,19 @@ class FlightController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {        
+        $flight = $this->flight->find($id);
+
+        $planes = $this->plane::all();
+        $airports = $this->airport::all();
+
+        if(!$flight)
+        {
+            return redirect()->back();
+        }
+        $title = "Editar Voo {$flight->id}";
+
+        return view('panel.flights.edit', compact ('title', 'flight','planes', 'airports'));
     }
 
     /**
@@ -110,7 +121,25 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $flight = $this->flight->find($id);
+
+        if(!$flight)
+        {
+            return redirect()->back();
+        }
+
+        
+
+        if($flight->update($request->all()))
+        {
+            return redirect()
+                        ->route('flights.index')
+                        ->with('success', 'Sucesso ao cadastrar');
+        }else{
+            return redirect()
+                        ->with('error', 'Falha ao cadastrar')
+                        ->withInput();
+        }
     }
 
     /**

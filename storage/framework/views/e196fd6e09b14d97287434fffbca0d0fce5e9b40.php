@@ -120,7 +120,12 @@
     <?php if($flight == null): ?>
         <input type="checkbox" value="0" name="is_promotion" class="form-control">
     <?php else: ?>
-        <input type="checkbox" value="1" name="is_promotion" class="form-control">
+        <?php if($flight->is_promotion == 1): ?>
+            <input type="checkbox" checked value="1" name="is_promotion" class="form-control">
+        <?php else: ?> 
+            <input type="checkbox" value="0" name="is_promotion" class="form-control">
+        <?php endif; ?>
+        
     <?php endif; ?>
     </label>
 </div>
@@ -157,6 +162,8 @@
         </textarea>           
     <?php endif; ?>
 </div>
+
+
 
 
 

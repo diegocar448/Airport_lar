@@ -120,7 +120,12 @@
     @if($flight == null)
         <input type="checkbox" value="0" name="is_promotion" class="form-control">
     @else
-        <input type="checkbox" value="1" name="is_promotion" class="form-control">
+        @if($flight->is_promotion == 1)
+            <input type="checkbox" checked value="1" name="is_promotion" class="form-control">
+        @else 
+            <input type="checkbox" value="0" name="is_promotion" class="form-control">
+        @endif
+        
     @endif
     </label>
 </div>
@@ -155,6 +160,8 @@
         </textarea>           
     @endif
 </div>
+
+
 
 
 
