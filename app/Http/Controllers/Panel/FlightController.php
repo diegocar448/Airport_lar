@@ -50,7 +50,9 @@ class FlightController extends Controller
 
         $flight = null;
         $planes = $this->plane::all();
-        $airports = $this->airport::pluck('name', 'id');
+        $airports = $this->airport::all();
+
+        
 
 
         return view('panel.flights.create', compact('title', 'planes', 'airports', 'flight'));
@@ -64,7 +66,17 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($this->flight->newFlight($request))
+        {
+            return redirect()
+                        ->route('flights.index')
+                        ->with('success', 'Sucesso ao cadastrar');
+        }else{
+            return redirect()
+                        ->with('error', 'Falha ao cadastrar')
+                        ->withInput();
+        }
+
     }
 
     /**

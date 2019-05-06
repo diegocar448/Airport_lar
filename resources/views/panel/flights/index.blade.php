@@ -74,7 +74,7 @@
                 <td>{{$flight->hour_output}}</td>                
                 <td>
                     <a href="{{route('flights.edit', $flight->id)}}" class="edit">Editar</a>                   
-                    <a href="{{route('flights.show', $flight->id)}}" class="edit">Apagar</a>                   
+                    <a href="{{route('flights.show', $flight->id)}}" class="delete">Apagar</a>                   
                    
                 </td>
             </tr>

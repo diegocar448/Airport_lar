@@ -52,7 +52,7 @@
                 <td><?php echo e($flight->hour_output); ?></td>                
                 <td>
                     <a href="<?php echo e(route('flights.edit', $flight->id)); ?>" class="edit">Editar</a>                   
-                    <a href="<?php echo e(route('flights.show', $flight->id)); ?>" class="edit">Apagar</a>                   
+                    <a href="<?php echo e(route('flights.show', $flight->id)); ?>" class="delete">Apagar</a>                   
                    
                 </td>
             </tr>

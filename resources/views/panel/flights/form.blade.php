@@ -1,7 +1,7 @@
 
 <div class="form-group">
     <label for="plane_id">Escolha o avião</label>
-    <select class="form-control" name="class" id="">
+    <select class="form-control" name="plane_id" id="">
         @foreach($planes as $plane)        
             <option
             @if($flight != null)             
@@ -21,11 +21,11 @@
     <select class="form-control" name="airport_origin_id" id="">
         @foreach($airports as $airport)        
             <option
-            @if($airport != null)             
+            @if($flight != null)             
                 @if($flight->airport_origin_id == $airport->id)
                     selected="selected"            
-                @elseif($flight->airport_origin_id == $airport->id)
-                    selected="selected"
+                @else
+                    
                 @endif            
             @endif            
             value="{{$airport->id}}"            
@@ -39,7 +39,7 @@
     <select class="form-control" name="airport_destination_id" id="">
         @foreach($airports as $airport)        
             <option
-            @if($airport != null)             
+            @if($flight != null)             
                 @if($flight->airport_destination_id == $airport->id)
                     selected="selected"            
                 @elseif($flight->airport_destination_id == $airport->id)
@@ -91,18 +91,18 @@
 <div class="form-group">
     <label for="old_price">Preço Anterior</label>
     @if($flight == null)
-        <input type="time" value="{{ old('old_price' ?? '')}}" placeholder="preço anterior" name="old_price" class="form-control">
+        <input type="number" value="{{ old('old_price' ?? '')}}" placeholder="preço anterior" name="old_price" class="form-control">
     @else
-        <input type="time" value="{{ $flight->old_price ?? old('old_price' ?? '')}}" placeholder="preço anterior" name="old_price" class="form-control">
+        <input type="number" value="{{ $flight->old_price ?? old('old_price' ?? '')}}" placeholder="preço anterior" name="old_price" class="form-control">
     @endif
 </div>
 
 <div class="form-group">
     <label for="price">Preço</label>
     @if($flight == null)
-        <input type="time" value="{{ old('price' ?? '')}}" placeholder="Preço" name="price" class="form-control">
+        <input type="number" value="{{ old('price' ?? '')}}" placeholder="Preço" name="price" class="form-control">
     @else
-        <input type="time" value="{{ $flight->price ?? old('price' ?? '')}}" placeholder="Preço" name="price" class="form-control">
+        <input type="number" value="{{ $flight->price ?? old('price' ?? '')}}" placeholder="Preço" name="price" class="form-control">
     @endif
 </div>
 
@@ -118,9 +118,9 @@
 <div class="form-group">
     <label for="is_promotion">É Promoção
     @if($flight == null)
-        <input type="checkbox" name="is_promotion" class="form-control">
+        <input type="checkbox" value="0" name="is_promotion" class="form-control">
     @else
-        <input type="checkbox" checked name="is_promotion" class="form-control">
+        <input type="checkbox" value="1" name="is_promotion" class="form-control">
     @endif
     </label>
 </div>
@@ -144,7 +144,7 @@
 </div>
 
 <div class="form-group">
-    <label for="description">Qtd. Paradas</label>    
+    <label for="description">Descrição</label>    
     @if($flight == null)
         <textarea rows="4" cols="50" name="description" class="form-control">
                 {{ old('description' ?? '')}}
