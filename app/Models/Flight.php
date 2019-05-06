@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Airport;
 use Illuminate\Database\Eloquent\Model;
 
 class Flight extends Model
@@ -27,6 +28,14 @@ class Flight extends Model
                     ->paginate($totalPage);
     } */    
 
+
+
+    public function getItems()
+    {
+        return $this->with(['origin', 'destination'])
+                    ->paginate($this->totalPage);
+    }
+
     public function newFlight($request)
     {
         //$data = $request->all();
@@ -40,11 +49,19 @@ class Flight extends Model
         $data['time_duration'] = $request->time_duration;
         $data['hour_output'] = $request->hour_output;
         $data['arrival_time'] = $request->arrival_time;
-        $data['total_plots'] = $request->total_plots;
-
-        
+        $data['total_plots'] = $request->total_plots;        
 
         return $this->create($data);
+    }
+
+    public function origin()
+    {
+        return $this->belongsTo(Airport::class, 'airport_origin_id');
+    }
+
+    public function destination()
+    {
+        return $this->belongsTo(Airport::class, 'airport_destination_id');
     }
 
     

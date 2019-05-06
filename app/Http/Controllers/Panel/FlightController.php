@@ -32,9 +32,9 @@ class FlightController extends Controller
     {
         $dataForm  =$request->except('_token');
 
-        $title = "Voos disponiveius";
+        $title = "Voos disponiveis";
 
-        $flights = $this->flight->paginate($this->totalPage);
+        $flights = $this->flight->getItems();
 
         return view('panel.flights.index', compact('title', 'flights', 'dataForm'));
     }

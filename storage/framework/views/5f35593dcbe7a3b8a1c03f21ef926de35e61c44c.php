@@ -45,8 +45,12 @@
         <?php $__empty_1 = true; $__currentLoopData = $flights; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $flight): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <tr>
                 <td><?php echo e($flight->id); ?></td>                
-                <td><?php echo e($flight->ariport_origin_id); ?></td>                
-                <td><?php echo e($flight->airport_destination_id); ?></td>                
+                <td>
+                    <a href=""><?php echo e($flight->origin->name); ?></a>                    
+                </td>                
+                <td>
+                    <a href=""><?php echo e($flight->destination->name); ?></a>
+                </td>                
                 <td><?php echo e($flight->qty_stops); ?></td>                
                 <td><?php echo e($flight->date); ?></td>                
                 <td><?php echo e($flight->hour_output); ?></td>                
