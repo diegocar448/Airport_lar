@@ -20,6 +20,7 @@ class ComposerStaticInit2e37bb1c6bd9310dc7fcc7618df17b2d
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        'fdb3b5f01b3ed818a713c5450349237f' => __DIR__ . '/../..' . '/app/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -368,6 +369,13 @@ class ComposerStaticInit2e37bb1c6bd9310dc7fcc7618df17b2d
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Panel\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/BrandController.php',
+        'App\\Http\\Controllers\\Panel\\CityController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/CityController.php',
+        'App\\Http\\Controllers\\Panel\\FlightController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/FlightController.php',
+        'App\\Http\\Controllers\\Panel\\PanelController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/PanelController.php',
+        'App\\Http\\Controllers\\Panel\\PlaneController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/PlaneController.php',
+        'App\\Http\\Controllers\\Panel\\StateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Panel/StateController.php',
+        'App\\Http\\Controllers\\Site\\SiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/SiteController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -376,6 +384,8 @@ class ComposerStaticInit2e37bb1c6bd9310dc7fcc7618df17b2d
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\BrandStoreUpdateFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BrandStoreUpdateFormRequest.php',
+        'App\\Http\\Requests\\PlaneStoreUpdateFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PlaneStoreUpdateFormRequest.php',
         'App\\Models\\Airport' => __DIR__ . '/../..' . '/app/Models/Airport.php',
         'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
         'App\\Models\\City' => __DIR__ . '/../..' . '/app/Models/City.php',
