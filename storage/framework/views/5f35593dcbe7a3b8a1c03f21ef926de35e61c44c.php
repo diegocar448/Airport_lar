@@ -34,6 +34,7 @@
     <table class="table table-striped">
         <tr>
             <th>#</th>                 
+            <th>Imagem</th>                 
             <th>Origem</th>                 
             <th>Destino</th>                 
             <th>Paradas</th>                 
@@ -45,6 +46,13 @@
         <?php $__empty_1 = true; $__currentLoopData = $flights; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $flight): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
             <tr>
                 <td><?php echo e($flight->id); ?></td>                
+                <td>
+                    <?php if($flight->image): ?>
+                        <img src="<?php echo e(url("storage/flights/{$flight->image}")); ?>" alt="<?php echo e($flight->id); ?>" style="max-width:100px;">
+                    <?php else: ?>
+                        <img src="<?php echo e(url("storage/image.png")); ?>" alt="<?php echo e($flight->id); ?>" style="max-width:100px;">
+                    <?php endif; ?>
+                </td>                
                 <td>
                     <a href=""><?php echo e($flight->origin->name); ?></a>                    
                 </td>                

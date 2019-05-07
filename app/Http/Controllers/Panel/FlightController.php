@@ -161,10 +161,43 @@ class FlightController extends Controller
             return redirect()->back();
         }
 
-        
+         
 
-        if($flight->update($request->all()))
+        //verifica se o arquivo existe e se é valido 
+        if($request->hasFile('image') && $request->file('image')->isValid())
         {
+            
+            //verifica se exite, caso exista manter o nome mas troca o arquivo
+            if($flight->image)
+            {
+                
+                $nameFile = $flight->image;        
+                  
+            }else{
+                $nameFile = uniqid(date('HisYmd')).'.'.$request->image->extension();    
+                    
+            }
+
+                       
+            
+            //verifica se deu certo o upload
+            if(!$request->image->storeAs('flights', $nameFile)){
+                return redirect()
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload')
+                        ->withInput();                
+            }
+
+            
+        }else{
+            
+        }
+
+        
+        
+        if($flight->updateFlight($request, $nameFile))
+        {
+            
             return redirect()
                         ->route('flights.index')
                         ->with('success', 'Sucesso ao cadastrar');
