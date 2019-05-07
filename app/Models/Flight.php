@@ -37,10 +37,10 @@ class Flight extends Model
                     ->paginate($this->totalPage);
     }
 
-    public function newFlight($request)
+    public function newFlight($request, $nameFile = '')
     {
-        //$data = $request->all();
-        $data['airport_origin_id'] = $request->airport_origin_id;
+        $data = $request->all();
+        /* $data['airport_origin_id'] = $request->airport_origin_id;
         $data['airport_destination_id'] = $request->airport_destination_id;
         $data['date'] = $request->date;
         $data['is_promotion'] = $request->is_promotion;
@@ -52,7 +52,9 @@ class Flight extends Model
         $data['arrival_time'] = $request->arrival_time;
         $data['total_plots'] = $request->total_plots;        
         $data['description'] = $request->description;        
-        $data['qty_stops'] = $request->qty_stops;        
+        $data['qty_stops'] = $request->qty_stops;    */ 
+        
+        $data['image'] = $nameFile;
 
         return $this->create($data);
     }
