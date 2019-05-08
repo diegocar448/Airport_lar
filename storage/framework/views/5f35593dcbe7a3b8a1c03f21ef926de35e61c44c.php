@@ -17,6 +17,56 @@
 
     <div class="form-search">        
 
+        <form class="" action="<?php echo e(route('flights.search')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+
+            <div class="row">
+                <div class="col-md-4">                                            
+                    <input class="form-control" type="number" value="<?php echo e($code ?? ""); ?>" name="code" placeholder="Código">
+                </div>   
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="date" value="<?php echo e($date ?? ""); ?>" name="date" placeholder="Data">
+                </div>  
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="time" value="<?php echo e($hour_output ?? ""); ?>" name="hour_output" placeholder="Hora de Saída">
+                </div> 
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="number" value="<?php echo e($total_plots ?? ""); ?>" name="total_plots" placeholder="Tota de Paradas">
+                </div> 
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-search">Pesquisar</button>
+                </div>
+                
+            </div>
+        </form> 
+        
+        <br>
+        <?php if($dataForm != null): ?>
+            <div class="alert alert-info">
+                <p>
+                    <a href="<?php echo e(route('flights.search')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+
+                    <?php if(isset($code)): ?>
+                        <p>Código: <strong><?php echo e($code); ?></strong></p>
+                    <?php endif; ?>    
+
+                    <?php if(isset($date)): ?>
+                        <p>Data: <strong><?php echo e($date); ?></strong></p>
+                    <?php endif; ?>
+
+                    <?php if(isset($hour_output)): ?>
+                        <p>Hora de Saída: <strong><?php echo e($hour_output); ?></strong></p>
+                    <?php endif; ?>
+
+                    <?php if(isset($total_stops)): ?>
+                        <p>Paradas: <strong><?php echo e($total_plots); ?></strong></p>
+                    <?php endif; ?>
+
+                    
+                </p>
+            </div>
+        <?php endif; ?>
+    </div> 
 
     <div class="messages">
             <?php echo $__env->make('panel.includes.alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

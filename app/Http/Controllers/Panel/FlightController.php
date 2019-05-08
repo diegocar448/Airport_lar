@@ -30,7 +30,7 @@ class FlightController extends Controller
      */
     public function index(Request $request)
     {
-        $dataForm =$request->except('_token');
+        $dataForm = null;
 
         $title = "Voos disponiveis";
 
@@ -221,5 +221,23 @@ class FlightController extends Controller
         return redirect()
                         ->route('flights.index')
                         ->with('success', 'Sucesso ao cadastrar');
+    }
+
+
+    public function search(Request $request)
+    {
+        $code = $request->code;
+        $date = $request->date;
+        $hour_output = $request->hour_output;
+        $total_plots = $request->total_plots;
+        
+
+        $dataForm = $request->except("_token");
+        
+        $flights = $this->flight->search($request, $this->totalPage);
+        
+        $title = 'Resultados dos voos pesquisando';
+
+        return view('panel.flights.index', compact('title', 'flights', 'code', 'date', 'hour_output', 'total_plots', 'dataForm'));
     }
 }

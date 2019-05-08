@@ -39,20 +39,7 @@ class Flight extends Model
 
     public function newFlight($request, $nameFile = '')
     {
-        $data = $request->all();
-        /* $data['airport_origin_id'] = $request->airport_origin_id;
-        $data['airport_destination_id'] = $request->airport_destination_id;
-        $data['date'] = $request->date;
-        $data['is_promotion'] = $request->is_promotion;
-        $data['plane_id'] = $request->plane_id;
-        $data['old_price'] = $request->old_price;
-        $data['price'] = $request->price;
-        $data['time_duration'] = $request->time_duration;
-        $data['hour_output'] = $request->hour_output;
-        $data['arrival_time'] = $request->arrival_time;
-        $data['total_plots'] = $request->total_plots;        
-        $data['description'] = $request->description;        
-        $data['qty_stops'] = $request->qty_stops;    */ 
+        $data = $request->all();    
         
         $data['image'] = $nameFile;
 
@@ -85,6 +72,26 @@ class Flight extends Model
     {
         return Carbon::parse($value)->format('d/m/Y');
     } */
+
+
+    public function search($request, $totalPage)
+    {
+        $flights = $this->where(function($query) use($request){            
+            if($request->code)
+                $query->where('id', $request->code);
+
+            if($request->date)
+                $query->where('date', '>=', $request->date);
+
+            if($request->hour_output)
+                $query->where('hour_output', $request->hour_output);
+
+            if($request->total_stops)
+                $query->where('total_plots', $request->total_stops);
+        })->paginate($totalPage);
+
+        return $flights;
+    }
 
 
 
