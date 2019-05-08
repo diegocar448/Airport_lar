@@ -21,7 +21,7 @@
             <?php echo csrf_field(); ?>
 
             <div class="row">
-                <div class="col-md-4">                                            
+                <div class="col-md-2">                                            
                     <input class="form-control" type="number" value="<?php echo e($code ?? ""); ?>" name="code" placeholder="Código">
                 </div>   
                 <div class="col-md-2">                                            
@@ -33,10 +33,42 @@
                 <div class="col-md-2">                                            
                     <input class="form-control" type="number" value="<?php echo e($total_plots ?? ""); ?>" name="total_plots" placeholder="Tota de Paradas">
                 </div> 
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-search">Pesquisar</button>
+                <div class="col-md-2">                                            
+                    
+                    <select name="origin" class="form-control">
+                        <option value=''>Selecione a origem</option>
+                        <?php $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($airport->id); ?>"
+                                <?php if(count($origin) != 0): ?>
+                                    <?php if($origin[0]->id == $airport->id): ?>
+                                        selected="selected"
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            ><?php echo e($airport->name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                </div> 
+                <div class="col-md-2">                                            
+                    
+                    <select name="destination" class="form-control">
+                        <option value=''>Selecione o destino</option>
+                        <?php $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($airport->id); ?>"
+                                <?php if(count($destination) != 0): ?>
+                                    <?php if($destination[0]->id == $airport->id): ?>
+                                        selected="selected"
+                                    <?php endif; ?>
+                                <?php endif; ?>    
+                            ><?php echo e($airport->name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                </div>                
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-block btn-primary">Pesquisar</button>
                 </div>
-                
             </div>
         </form> 
         
@@ -60,6 +92,18 @@
 
                     <?php if(isset($total_stops)): ?>
                         <p>Paradas: <strong><?php echo e($total_plots); ?></strong></p>
+                    <?php endif; ?>
+                       
+                    <?php if(count($origin) != 0): ?>
+                        <?php if(isset($origin)): ?>
+                            <p>Origem: <strong><?php echo e($origin[0]->name); ?></strong></p>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <?php if(count($destination) != 0): ?>
+                        <?php if(isset($destination)): ?>
+                            <p>Destino: <strong><?php echo e($destination[0]->name); ?></strong></p>
+                        <?php endif; ?>
                     <?php endif; ?>
 
                     

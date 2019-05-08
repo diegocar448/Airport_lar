@@ -36,7 +36,13 @@ class FlightController extends Controller
 
         $flights = $this->flight->getItems();
 
-        return view('panel.flights.index', compact('title', 'flights', 'dataForm'));
+        $airports = $this->airport->all();
+
+        $origin = [];
+
+        $destination = [];
+
+        return view('panel.flights.index', compact('title', 'flights', 'dataForm','airports', 'origin', 'destination'));
     }
 
     /**
@@ -230,14 +236,21 @@ class FlightController extends Controller
         $date = $request->date;
         $hour_output = $request->hour_output;
         $total_plots = $request->total_plots;
+        /* $origin = $request->origin;
+        $destination = $request->destination; */
+
+        $origin = $this->airport->where("id", $request->origin)->get();
+        $destination = $this->airport->where("id", $request->destination)->get();
         
 
         $dataForm = $request->except("_token");
         
         $flights = $this->flight->search($request, $this->totalPage);
+
+        $airports = $this->airport->all();
         
         $title = 'Resultados dos voos pesquisando';
 
-        return view('panel.flights.index', compact('title', 'flights', 'code', 'date', 'hour_output', 'total_plots', 'dataForm'));
+        return view('panel.flights.index', compact('title', 'flights', 'code', 'date', 'hour_output', 'total_plots', 'origin', 'destination', 'dataForm', 'airports'));
     }
 }
