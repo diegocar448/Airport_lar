@@ -7,6 +7,7 @@ use App\Models\Flight;
 use App\Models\Airport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateFlightFormRequest;
 
 class FlightController extends Controller
 {
@@ -70,7 +71,7 @@ class FlightController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateFlightFormRequest $request)
     {
         $nameFile = '';
 
@@ -158,7 +159,7 @@ class FlightController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateFlightFormRequest $request, $id)
     {
         $flight = $this->flight->find($id);
 
