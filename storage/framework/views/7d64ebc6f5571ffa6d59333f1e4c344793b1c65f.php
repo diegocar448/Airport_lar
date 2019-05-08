@@ -54,8 +54,9 @@
             <tr>
                 <td><?php echo e($city->name); ?></td>                
                 <td>
-                    #ações                    
-                   
+                    <a href="<?php echo e(route('airports.index', $city->id)); ?>" class="edit">
+                        <i class="fa fa-thumb-tack" aria-hidden="true"> Aeroportos</i>
+                    </a>                                      
                 </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

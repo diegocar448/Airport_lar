@@ -4,13 +4,11 @@
 
 <div class="bred">
     <a href="{{ route('panel') }}" class="bred">Home  ></a>
-    <a href="{{ route('states.index') }}" class="bred">Estado  ></a>
-    <a href="{{ route('states.cities', $state->initials) }}" class="bred">{{ $state->name }}</a>
-    <a href="" class="bred">Cidades</a>
+    <a href="{{ route('airports.index', $city->id) }}" class="bred">Airports</a>
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Cidades do Estado: ({{$cities->count()}} - {{$totalCidades ?? $cities->total()}}) <strong>{{ $state->name }}</strong></h1>
+    <h1 class="title-pg">Aeroportos da cidade: {{$city->name}}</h1>
 </div>
 
 
@@ -18,7 +16,7 @@
 
     <div class="form-search">        
 
-        <form class="" action="{{route('states.cities.search', $state->initials)}}" method="POST">
+        <form class="" action="{{route('flights.search')}}" method="POST">
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
@@ -29,33 +27,46 @@
                 </div>
                 
             </div>
-        </form>        
+        </form>
+        
 
         @if(isset($dataForm['key_search']))
             <div class="alert alert-info">
                 <p>
-                    <a href="{{route('states.cities.search', $state->initials)}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    <a href="{{route('brands.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     Resultados para: <strong>{{$dataForm['key_search']}}</strong>
                 </p>
             </div>
         @endif
-    </div> 
+    </div>
+ 
 
+    <div class="messages">
+       @include('panel.includes.alerts')
+    </div>
 
+    <div class="class-btn-insert">
+        <a href="{{route('brands.create')}}" class="btn-insert">
+            <span class="glyphicon glyphicon-plus"></span>
+            Cadastrar
+        </a>
+    </div>
     
     <table class="table table-striped">
         <tr>
-            <th>Nome</th>                 
+            <th>Nome</th>
+            <th>Endereço</th>
             <th width="200">Ações</th>
         </tr>
 
-        @forelse($cities as $city)
+        @forelse($airports as $airport)
             <tr>
-                <td>{{$city->name}}</td>                
+                <td>{{$airport->name}}</td>
+                <td>{{$airport->address}}</td>
+                <td>{{$airport->name}}</td>
                 <td>
-                    <a href="{{ route('airports.index', $city->id) }}" class="edit">
-                        <i class="fa fa-thumb-tack" aria-hidden="true"> Aeroportos</i>
-                    </a>                                      
+                    <a href="{{route('airports.edit', [$city->id, $airport->id])}}" class="edit">Edit</a>
+                    <a href="{{route('airports.show', [$city->id, $airport->id])}}" class="delete">View</a>                    
                 </td>
             </tr>
         @empty
@@ -66,12 +77,10 @@
     </table>
 
     @if(isset($dataForm))
-        {!! $cities->appends($dataForm)->links() !!}
+        {!! $airports->appends($dataForm)->links() !!}
     @else
-        {!! $cities->links() !!}
+        {!! $airports->links() !!}
     @endif
-
-  
 
 </div><!--Content Dinâmico-->
 

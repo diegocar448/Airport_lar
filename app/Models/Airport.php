@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Model;
 
 class Airport extends Model
@@ -26,6 +27,11 @@ class Airport extends Model
         return $this->where('name', 'LIKE', "%{$keySearch}%")
                     ->paginate($totalPage);
     } */
+
+    public function city()
+    {
+        $this->hasOne(City::class);
+    }
 
     
 }
