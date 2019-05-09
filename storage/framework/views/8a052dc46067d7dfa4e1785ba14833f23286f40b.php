@@ -1,21 +1,5 @@
 
-<div class="form-group">
-    <label for="city_id">Escolha a Cidade</label>
-    <select class="form-control" name="city_id" id="">
-        <option value="">Selecione uma Cidade</option>
-        <?php $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ci): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>        
-            <option
-            <?php if($city != null): ?>             
-                <?php if($ci->id == Request::segment(3)): ?>
-                    selected="selected"            
-                
-                <?php endif; ?>            
-            <?php endif; ?>            
-            value="<?php echo e($ci->id); ?>"            
-            ><?php echo e($ci->name); ?></option>      
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </select>
-</div>
+
 
 <div class="form-group">
     <label for="name">Nome</label>
@@ -61,18 +45,4 @@
         </textarea>        
     
 </div>
-    
-
-
-
-
-
-
-
-   
-    
-    
-    
-    
-    
-    <?php /**PATH /var/www/laravel58/resources/views/panel/airports/form.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/laravel58/resources/views/panel/airports/form.blade.php ENDPATH**/ ?>
