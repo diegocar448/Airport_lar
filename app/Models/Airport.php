@@ -30,7 +30,7 @@ class Airport extends Model
 
     public function city()
     {
-        $this->hasOne(City::class);
+        return $this->belongsTo(City::class);
     }
 
     

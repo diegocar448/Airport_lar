@@ -52,8 +52,9 @@ class AirportController extends Controller
      */
     public function create($idCity)
     {
-        $city = $this->city->find($idCity);
+        $airport = null;
 
+        $city = $this->city->find($idCity);
        
         $cities = $this->city->where("state_id", $city->state_id)->orderBy('name', 'ASC')->get();
 
@@ -63,7 +64,7 @@ class AirportController extends Controller
 
         $title = "Cadastrando novo aeroporto na cidade {$city->name}";
 
-        return view('panel.airports.create', compact('title', 'city', 'cities'));
+        return view('panel.airports.create', compact('title', 'city', 'cities', 'airport'));
     }
 
     /**
@@ -111,9 +112,21 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($idCity, $id)
+    {        
+        
+        $airport = $this->airport->with("city")->find($id);
+
+        if(!$airport)
+        {
+            return redirect()->back();
+        }
+
+        $city = $airport->city;
+
+        $title = "Editar Aeroporto {$airport->name}";
+
+        return view('panel.airports.edit', compact('airport', 'title', 'city'));
     }
 
     /**
@@ -123,9 +136,26 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idCity, $id)
     {
-        //
+        $airport = $this->airport->find($id);
+
+        if(!$airport)
+        {
+            return redirect()->back();
+        }
+
+        if($airport->update($request->all()))
+        {
+            return redirect()
+                            ->route('airports.index', $idCity)
+                            ->with('success', 'Aeroporto atualizando com sucesso');
+        }else{
+            return redirect()
+                            ->back()
+                            ->with('error', 'Falha ao atualizar aeroporto')
+                            ->withInput();
+        }
     }
 
     /**
