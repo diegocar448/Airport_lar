@@ -33,7 +33,7 @@
         @if(isset($dataForm['key_search']))
             <div class="alert alert-info">
                 <p>
-                    <a href="{{route('brands.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    <a href="{{route('airports.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     Resultados para: <strong>{{$dataForm['key_search']}}</strong>
                 </p>
             </div>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="class-btn-insert">
-        <a href="{{route('brands.create')}}" class="btn-insert">
+        <a href="{{route('airports.create',  $city->id)}}" class="btn-insert">
             <span class="glyphicon glyphicon-plus"></span>
             Cadastrar
         </a>

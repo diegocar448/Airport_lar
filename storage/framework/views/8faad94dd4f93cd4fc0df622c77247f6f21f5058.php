@@ -34,7 +34,7 @@
         <?php if(isset($dataForm['key_search'])): ?>
             <div class="alert alert-info">
                 <p>
-                    <a href="<?php echo e(route('brands.index')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                    <a href="<?php echo e(route('airports.index')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                     Resultados para: <strong><?php echo e($dataForm['key_search']); ?></strong>
                 </p>
             </div>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="class-btn-insert">
-        <a href="<?php echo e(route('brands.create')); ?>" class="btn-insert">
+        <a href="<?php echo e(route('airports.create',  $city->id)); ?>" class="btn-insert">
             <span class="glyphicon glyphicon-plus"></span>
             Cadastrar
         </a>
