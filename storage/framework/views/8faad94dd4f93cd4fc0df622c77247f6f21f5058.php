@@ -57,7 +57,9 @@
         <tr>
             <th>Nome</th>
             <th>Endereço</th>
-            <th width="200">Ações</th>
+            <th width="">Ações</th>
+            <th width=""></th>
+            <th width=""></th>
         </tr>
 
         <?php $__empty_1 = true; $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -66,8 +68,8 @@
                 <td><?php echo e($airport->address); ?></td>
                 <td><?php echo e($airport->name); ?></td>
                 <td>
-                    <a href="<?php echo e(route('airports.edit', [$city->id, $airport->id])); ?>" class="edit">Edit</a>
-                    <a href="<?php echo e(route('airports.show', [$city->id, $airport->id])); ?>" class="delete">View</a>                    
+                    <a href="<?php echo e(route('airports.edit', [$city->id, $airport->id])); ?>" class="edit">Edit</a>                
+                    <a href="<?php echo e(route('airports.show', [$city->id, $airport->id])); ?>" class="delete">View</a>
                 </td>
             </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

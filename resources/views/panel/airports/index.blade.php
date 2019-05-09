@@ -56,7 +56,9 @@
         <tr>
             <th>Nome</th>
             <th>Endereço</th>
-            <th width="200">Ações</th>
+            <th width="">Ações</th>
+            <th width=""></th>
+            <th width=""></th>
         </tr>
 
         @forelse($airports as $airport)
@@ -65,8 +67,8 @@
                 <td>{{$airport->address}}</td>
                 <td>{{$airport->name}}</td>
                 <td>
-                    <a href="{{route('airports.edit', [$city->id, $airport->id])}}" class="edit">Edit</a>
-                    <a href="{{route('airports.show', [$city->id, $airport->id])}}" class="delete">View</a>                    
+                    <a href="{{route('airports.edit', [$city->id, $airport->id])}}" class="edit">Edit</a>                
+                    <a href="{{route('airports.show', [$city->id, $airport->id])}}" class="delete">View</a>
                 </td>
             </tr>
         @empty
