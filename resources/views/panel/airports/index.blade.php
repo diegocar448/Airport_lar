@@ -16,11 +16,11 @@
 
     <div class="form-search">        
 
-        <form class="" action="{{route('flights.search')}}" method="POST">
+        <form class="" action="{{route('airports.search', $city->id)}}" method="POST">
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
-                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="key_search" placeholder="O que deseja encontrar?">
+                    <input class="form-control" type="text" value="{{$dataForm['key_search'] ?? ""}}" name="key_search" placeholder="O que deseja encontrar?">
                 </div>    
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
@@ -32,8 +32,7 @@
 
         @if(isset($dataForm['key_search']))
             <div class="alert alert-info">
-                <p>
-                    <a href="{{route('airports.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                <p>                    
                     Resultados para: <strong>{{$dataForm['key_search']}}</strong>
                 </p>
             </div>

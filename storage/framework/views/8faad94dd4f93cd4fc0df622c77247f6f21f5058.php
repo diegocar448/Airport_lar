@@ -16,12 +16,12 @@
 
     <div class="form-search">        
 
-        <form class="" action="<?php echo e(route('flights.search')); ?>" method="POST">
+        <form class="" action="<?php echo e(route('airports.search', $city->id)); ?>" method="POST">
             <?php echo csrf_field(); ?>
 
             <div class="row">
                 <div class="col-md-2">                                            
-                    <input class="form-control" type="text" value="<?php echo e($campoBusca ?? ""); ?>" name="key_search" placeholder="O que deseja encontrar?">
+                    <input class="form-control" type="text" value="<?php echo e($dataForm['key_search'] ?? ""); ?>" name="key_search" placeholder="O que deseja encontrar?">
                 </div>    
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
@@ -33,8 +33,7 @@
 
         <?php if(isset($dataForm['key_search'])): ?>
             <div class="alert alert-info">
-                <p>
-                    <a href="<?php echo e(route('airports.index')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                <p>                    
                     Resultados para: <strong><?php echo e($dataForm['key_search']); ?></strong>
                 </p>
             </div>

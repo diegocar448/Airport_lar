@@ -38,11 +38,11 @@ class AirportController extends Controller
 
         $title = "Aeroportos da cidade {$city->name}";
 
-   
+        $campoBusca = null;
 
         $airports = $city->airports()->paginate($this->totalPage);
 
-        return view('panel.airports.index', compact('city', 'title', 'airports', 'dataForm'));
+        return view('panel.airports.index', compact('city', 'title', 'airports', 'dataForm', 'campoBusca'));
     }
 
     /**
@@ -197,4 +197,31 @@ class AirportController extends Controller
                             ->withInput();
         }
     }
+
+    public function search(Request $request, $idCity)
+    {
+        $city = $this->city->find($idCity);
+
+        if(!$city)
+        {
+            return redirect()->back();
+        }
+
+       
+
+        $airports = $this->airport->search($city, $request, $this->totalPage);    
+        
+        $title = "Aeroportos da cidade {$city->name}";
+
+        $dataForm = $request->except("_token");
+
+        $campoBusca = $request->key_search;
+        
+
+        return view('panel.airports.index', compact('city', 'title', 'airports', 'dataForm', 'campoBusca'));
+
+    }
+
+
+
 }
