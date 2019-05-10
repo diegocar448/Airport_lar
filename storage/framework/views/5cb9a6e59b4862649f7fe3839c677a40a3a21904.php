@@ -60,6 +60,13 @@
 					Voos
 				</a>
 			</li>
+
+			<li>
+				<a href="<?php echo e(route('users.index')); ?>">
+					<i class="fa fa-users"></i>
+					Usuários
+				</a>
+			</li>
 			
 		</ul>
 	</div>
