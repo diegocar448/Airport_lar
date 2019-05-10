@@ -30,7 +30,7 @@
             </div>
         </form>
         
-
+        <br>
         <?php if(isset($dataForm['key_search'])): ?>
             <div class="alert alert-info">
                 <p>                    

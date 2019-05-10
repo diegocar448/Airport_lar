@@ -53,6 +53,15 @@
 </div>
 
 <div class="form-group">
+    <label for="address">Número</label>
+    @if($airport == null)
+        <input type="text" value="{{ old('number' ?? '')}}" name="number" class="form-control">
+    @else
+        <input type="text" value="{{ $airport->number ?? old('number' ?? '')}}" name="number" class="form-control">
+    @endif
+</div>
+
+<div class="form-group">
     <label for="zip_code">CEP</label>
     @if($airport == null)
         <input type="number" value="{{ old('zip_code' ?? '')}}" name="zip_code" class="form-control">

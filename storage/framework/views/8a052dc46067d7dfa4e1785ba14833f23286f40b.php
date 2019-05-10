@@ -38,6 +38,15 @@
 </div>
 
 <div class="form-group">
+    <label for="address">Número</label>
+    <?php if($airport == null): ?>
+        <input type="text" value="<?php echo e(old('number' ?? '')); ?>" name="number" class="form-control">
+    <?php else: ?>
+        <input type="text" value="<?php echo e($airport->number ?? old('number' ?? '')); ?>" name="number" class="form-control">
+    <?php endif; ?>
+</div>
+
+<div class="form-group">
     <label for="zip_code">CEP</label>
     <?php if($airport == null): ?>
         <input type="number" value="<?php echo e(old('zip_code' ?? '')); ?>" name="zip_code" class="form-control">

@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Airport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateStoreAirportRequest;
 
 class AirportController extends Controller
 {
@@ -73,7 +74,7 @@ class AirportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idCity)
+    public function store(UpdateStoreAirportRequest $request, $idCity)
     {
         $city = $this->city->find($idCity);
 
@@ -148,7 +149,7 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idCity, $id)
+    public function update(UpdateStoreAirportRequest $request, $idCity, $id)
     {
         $airport = $this->airport->find($id);
 
