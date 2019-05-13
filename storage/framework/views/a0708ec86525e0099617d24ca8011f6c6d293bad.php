@@ -42,7 +42,7 @@
                 <td><?php echo e($reserve->id); ?></td>
                 <td><?php echo e($reserve->user->name); ?></td>
                 <td><?php echo e($reserve->flight->origin->name); ?></td>
-                <td><?php echo e($reserve->status); ?></td>
+                <td><?php echo e($reserve->status($reserve->status)); ?></td>
                 <td>
                     <a href="<?php echo e(route('reserves.edit', $reserve->id)); ?>" class="edit">Edit</a>                    
                 </td>

@@ -49,7 +49,6 @@ class ReserveController extends Controller
         $status = $this->reserve->status();
 
         $reserve = null;       
-
         return view('panel.reserves.create', compact('title','users', 'flights', 'status', 'reserve'));
     }
 
@@ -61,7 +60,21 @@ class ReserveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = "Cadastrar Nova Reserva";
+
+        $dataForm = $request->all();
+
+        $insert = $this->reserve->create($dataForm);
+
+        if($insert){
+            return redirect()
+                    ->route('reserves.index')
+                    ->with('success', 'Reservado com sucesso!');
+        }else{
+            return redirect()->back()
+                            ->withInput()
+                            ->with("error", 'Falha ao cadastrar!');
+        }
     }
     
 

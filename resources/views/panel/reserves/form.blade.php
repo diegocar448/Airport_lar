@@ -1,4 +1,4 @@
-
+{!! csrf_field() !!}
 <div class="form-group">
     <label for="user_id">Usuário</label>
     <select class="form-control" name="user_id" id="">
@@ -39,9 +39,9 @@
 <div class="form-group">
     <label for="date">Data da Reserva</label>
     @if($reserve == null)
-        <input type="date" value="{{ old('date') ?? date('Y-m-d')}}" name="date" class="form-control">
+        <input type="date" value="{{ old('date') ?? date('Y-m-d')}}" name="date_reserved" class="form-control">
     @else
-        <input type="date" value="{{ $reserve->date ?? old('date' ?? '')}}" name="date" class="form-control">
+        <input type="date" value="{{ $reserve->date ?? old('date' ?? '')}}" name="date_reserved" class="form-control">
     @endif
 </div>
 

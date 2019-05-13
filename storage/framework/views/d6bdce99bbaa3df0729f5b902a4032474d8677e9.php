@@ -1,3 +1,4 @@
+<?php echo csrf_field(); ?>
 
 <div class="form-group">
     <label for="user_id">Usuário</label>
@@ -39,9 +40,9 @@
 <div class="form-group">
     <label for="date">Data da Reserva</label>
     <?php if($reserve == null): ?>
-        <input type="date" value="<?php echo e(old('date') ?? date('Y-m-d')); ?>" name="date" class="form-control">
+        <input type="date" value="<?php echo e(old('date') ?? date('Y-m-d')); ?>" name="date_reserved" class="form-control">
     <?php else: ?>
-        <input type="date" value="<?php echo e($reserve->date ?? old('date' ?? '')); ?>" name="date" class="form-control">
+        <input type="date" value="<?php echo e($reserve->date ?? old('date' ?? '')); ?>" name="date_reserved" class="form-control">
     <?php endif; ?>
 </div>
 

@@ -18,7 +18,7 @@
 
     
     <form class="form form-search form-ds" action="{{route('reserves.store')}}" method="POST" enctype="multipart/form-data">       
-        {!! csrf_field() !!}
+        
         @include('panel.reserves.form')
 
         <div class="form-group">

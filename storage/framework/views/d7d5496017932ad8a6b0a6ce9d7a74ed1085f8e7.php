@@ -18,8 +18,7 @@
 
     
     <form class="form form-search form-ds" action="<?php echo e(route('reserves.store')); ?>" method="POST" enctype="multipart/form-data">       
-        <?php echo csrf_field(); ?>
-
+        
         <?php echo $__env->make('panel.reserves.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <div class="form-group">
