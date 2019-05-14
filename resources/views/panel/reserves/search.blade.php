@@ -5,6 +5,7 @@
 <div class="bred">
     <a href="{{ route('panel') }}" class="bred">Home  ></a>
     <a href="{{ route('reserves.index') }}" class="bred">Reservas</a>
+    <a href="" class="bred">Resultados da Pesquisa</a>
 </div>
 
 <div class="title-pg">
@@ -20,14 +21,8 @@
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
-                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="user" placeholder="Detalhes do usuário?">
+                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="key_search" placeholder="O que deseja encontrar?">
                 </div>    
-                <div class="col-md-2">                                            
-                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="reserve" placeholder="Detalhes da Reserva?">
-                </div>  
-                <div class="col-md-2">                                            
-                    <input class="form-control" type="date" value="{{$campoBusca ?? ""}}" name="date" placeholder="Detalhes do Voo?">
-                </div>  
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
                 </div>
@@ -70,8 +65,8 @@
         @forelse($reserves as $reserve)
             <tr>
                 <td>{{$reserve->id}}</td>
-                <td>{{$reserve->user->name}}</td>
-                <td>{{$reserve->flight->id}}  ({{ formatDateAndTime($reserve->flight->date) }})</td>
+                <td>{{$reserve->user_name}}</td>
+                <td>{{$reserve->flight_id}}  ({{ formatDateAndTime($reserve->flight_date) }})</td>
                 <td>{{$reserve->status($reserve->status)}}</td>
                 <td>
                     <a href="{{route('reserves.edit', $reserve->id)}}" class="edit">Edit</a>                    
