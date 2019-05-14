@@ -86,7 +86,24 @@ class ReserveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reserve = $this->reserve->with(['flight', 'user'])->find($id);  
+
+        if(!$reserve)
+        {
+            return redirect()->back();
+        }
+
+        $users = User::pluck('name','id');        
+        $flights = Flight::pluck('id','id');
+        $status = $this->reserve->status();
+
+
+        $user = $reserve->user;
+        $flight = $reserve->flight;
+
+        $title = "Editar reserva do usuário: {$user->name}"; 
+
+        return view('panel.reserves.edit', compact('reserve', 'title', 'user', 'flight', 'users', 'flights', 'status'));
     }
 
     /**
@@ -98,7 +115,18 @@ class ReserveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reserve = $this->reserve->find($id);        
+
+        if(!$reserve)
+        {
+            return redirect()->back();
+        }
+        if($reserve->changeStatus($request->status))
+        {
+            return redirect()->route('reserves.index')->with('message', 'Status atualizado com sucesso!');
+        }else{
+            return redirect()->withInput()->with('error', 'Falha ao reservar!');
+        }
     }
     
 }

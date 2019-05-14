@@ -6,9 +6,9 @@
         <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>        
             <option
             <?php if($reserve != null): ?>             
-                <?php if($reserve->user_id == $user->id): ?>
+                <?php if($reserve->user_id == $key): ?>
                     selected="selected"            
-                <?php elseif($reserve->user_id == $user->id): ?>
+                <?php elseif($reserve->user_id == $key): ?>
                     selected="selected"
                 <?php endif; ?>            
             <?php endif; ?>            
@@ -24,9 +24,9 @@
         <?php $__currentLoopData = $flights; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$flight): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>        
             <option
             <?php if($reserve != null): ?>             
-                <?php if($reserve->flight_id == $flight->id): ?>
+                <?php if($reserve->flight_id == $key): ?>
                     selected="selected"            
-                <?php elseif($reserve->flight_id == $flight->id): ?>
+                <?php elseif($reserve->flight_id == $key): ?>
                     selected="selected"
                 <?php endif; ?>            
             <?php endif; ?>            
@@ -42,7 +42,7 @@
     <?php if($reserve == null): ?>
         <input type="date" value="<?php echo e(old('date') ?? date('Y-m-d')); ?>" name="date_reserved" class="form-control">
     <?php else: ?>
-        <input type="date" value="<?php echo e($reserve->date ?? old('date' ?? '')); ?>" name="date_reserved" class="form-control">
+        <input type="date" value="<?php echo e($reserve->date_reserved ?? old('date' ?? '')); ?>" name="date_reserved" class="form-control">
     <?php endif; ?>
 </div>
 
@@ -56,9 +56,9 @@
         <?php $__currentLoopData = $status; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$sts): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>       
             <option
             <?php if($reserve != null): ?>             
-                <?php if($reserve->status == $flight->id): ?>
+                <?php if($reserve->status == $key): ?>
                     selected="selected"            
-                <?php elseif($reserve->status == $flight->id): ?>
+                <?php elseif($reserve->status == $key): ?>
                     selected="selected"
                 <?php endif; ?>            
             <?php endif; ?>            

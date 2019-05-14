@@ -5,9 +5,9 @@
         @foreach($users as $key=>$user)        
             <option
             @if($reserve != null)             
-                @if($reserve->user_id == $user->id)
+                @if($reserve->user_id == $key)
                     selected="selected"            
-                @elseif($reserve->user_id == $user->id)
+                @elseif($reserve->user_id == $key)
                     selected="selected"
                 @endif            
             @endif            
@@ -23,9 +23,9 @@
         @foreach($flights as $key=>$flight)        
             <option
             @if($reserve != null)             
-                @if($reserve->flight_id == $flight->id)
+                @if($reserve->flight_id == $key)
                     selected="selected"            
-                @elseif($reserve->flight_id == $flight->id)
+                @elseif($reserve->flight_id == $key)
                     selected="selected"
                 @endif            
             @endif            
@@ -41,7 +41,7 @@
     @if($reserve == null)
         <input type="date" value="{{ old('date') ?? date('Y-m-d')}}" name="date_reserved" class="form-control">
     @else
-        <input type="date" value="{{ $reserve->date ?? old('date' ?? '')}}" name="date_reserved" class="form-control">
+        <input type="date" value="{{ $reserve->date_reserved ?? old('date' ?? '')}}" name="date_reserved" class="form-control">
     @endif
 </div>
 
@@ -55,17 +55,16 @@
         @foreach($status as $key=>$sts)       
             <option
             @if($reserve != null)             
-                @if($reserve->status == $flight->id)
+                @if($reserve->status == $key)
                     selected="selected"            
-                @elseif($reserve->status == $flight->id)
+                @elseif($reserve->status == $key)
                     selected="selected"
                 @endif            
             @endif            
             value="{{$key}}"            
             >{{ $sts }}</option>      
         @endforeach
-    </select>
-    
+    </select>    
 </div>
 
 
