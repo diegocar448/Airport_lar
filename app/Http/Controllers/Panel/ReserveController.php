@@ -7,6 +7,7 @@ use App\Models\Flight;
 use App\Models\Reserve;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReserveFormRequest;
 
 class ReserveController extends Controller
 {
@@ -58,11 +59,13 @@ class ReserveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReserveFormRequest $request)
     {
         $title = "Cadastrar Nova Reserva";
 
         $dataForm = $request->all();
+
+        
 
         $insert = $this->reserve->create($dataForm);
 
