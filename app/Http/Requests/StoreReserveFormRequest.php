@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Rules\CheckAvailableFlight;
+
 
 
 
@@ -30,7 +32,11 @@ class StoreReserveFormRequest extends FormRequest
         
         return [
             'user_id'           =>'required|exists:users,id',
-            'flight_id'         =>'required|exists:flights,id',
+            'flight_id'         => [
+                'required',
+                'exists:flights,id',
+                new CheckAvailableFlight,
+            ],
             'date_reserved'     =>'required|date' ,          
             'status'            => [
                 'required',
