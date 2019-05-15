@@ -131,7 +131,7 @@ class ReserveController extends Controller
 
     public function search(Request $request)
     {
-        $reserves = $this->reserve->search($request, $this->totaPage);
+        $reserves = $this->reserve->search($request, $this->totalPage);
 
         $title = "Resultados para a pesquisa";
 

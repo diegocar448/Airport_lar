@@ -65,8 +65,7 @@
             value="<?php echo e($key); ?>"            
             ><?php echo e($sts); ?></option>      
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </select>
-    
+    </select>    
 </div>
 
 

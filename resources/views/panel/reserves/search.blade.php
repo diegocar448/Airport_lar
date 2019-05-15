@@ -21,24 +21,36 @@
             {!! csrf_field() !!}
             <div class="row">
                 <div class="col-md-2">                                            
-                    <input class="form-control" type="text" value="{{$campoBusca ?? ""}}" name="key_search" placeholder="O que deseja encontrar?">
+                    <input class="form-control" type="text" value="{{ $dataForm['user'] ?? '' }}" name="user" placeholder="Detalhes do usuário?">
                 </div>    
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="text" value="{{ $dataForm['reserve'] ?? '' }}" name="reserve" placeholder="Detalhes da Reserva?">
+                </div>  
+                <div class="col-md-2">                                            
+                    <input class="form-control" type="date" value="{{ $dataForm['date'] ?? '' }}" name="date" placeholder="Detalhes do Voo?">
+                </div>  
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
-                </div>
-                
+                </div>                
             </div>
         </form>
         
-
-        @if(isset($dataForm['key_search']))
-            <div class="alert alert-info">
-                <p>
-                    <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                    Resultados para: <strong>{{$dataForm['key_search']}}</strong>
-                </p>
-            </div>
-        @endif
+        <div class="alert alert-info">
+            <p>
+            @if(isset($dataForm['user']))                
+                <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                Resultados para o Usuário: <strong>{{$dataForm['user']}}</strong><br>                
+            @endif
+            @if(isset($dataForm['reserve']))               
+                <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                Resultados para a Reserva: <strong>{{$dataForm['reserve']}}</strong><br>                    
+            @endif
+            @if(isset($dataForm['date']))               
+                <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                Resultados para a Data: <strong>{{$dataForm['date']}}</strong><br>                  
+            @endif
+            </p>
+        </div>
     </div>
  
 
@@ -64,7 +76,7 @@
 
         @forelse($reserves as $reserve)
             <tr>
-                <td>{{$reserve->id}}</td>
+                <td>{{$reserve->user_id}}</td>
                 <td>{{$reserve->user_name}}</td>
                 <td>{{$reserve->flight_id}}  ({{ formatDateAndTime($reserve->flight_date) }})</td>
                 <td>{{$reserve->status($reserve->status)}}</td>
@@ -79,11 +91,13 @@
         @endforelse
     </table>
 
-    @if(isset($dataForm))
+    {!! $reserves->appends($dataForm)->links() !!}
+
+    {{-- @if(isset($dataForm))
         {!! $reserves->appends($dataForm)->links() !!}
     @else
         {!! $reserves->links() !!}
-    @endif
+    @endif --}}
 
 </div><!--Content Dinâmico-->
 
