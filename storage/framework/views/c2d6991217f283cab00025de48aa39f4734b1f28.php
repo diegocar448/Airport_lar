@@ -30,7 +30,16 @@
                 <div class="col-md-2">                                            
                     <input class="form-control" type="date" value="<?php echo e($dataForm['date'] ?? ''); ?>" name="date" placeholder="Detalhes do Voo?">
                 </div>  
-                <div class="col-md-6">
+                <div class="col-md-2">                                            
+                    <select name="status" class="form-control">
+                        <option value="">Selecione o Status da Reserva</option>
+                        <option <?php if($dataForm['status'] == "reserved"): ?> selected="selected" <?php else: ?> <?php endif; ?>   value="reserved">Reservado</option>
+                        <option <?php if($dataForm['status'] == "canceled"): ?>  selected="selected" <?php else: ?> <?php endif; ?>  value="canceled">Cancelado</option>
+                        <option <?php if($dataForm['status'] == "paid"): ?> selected="selected" <?php else: ?> <?php endif; ?>   value="paid">Pago</option>
+                        <option <?php if($dataForm['status'] == "concluded"): ?>  selected="selected" <?php else: ?> <?php endif; ?>  value="concluded">Concluido</option>
+                    </select>                    
+                </div> 
+                <div class="col-md-4">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
                 </div>                
             </div>
@@ -49,6 +58,21 @@
             <?php if(isset($dataForm['date'])): ?>               
                 <a href="<?php echo e(route('reserves.index')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 Resultados para a Data: <strong><?php echo e($dataForm['date']); ?></strong><br>                  
+            <?php endif; ?>
+            <?php if(isset($dataForm['status'])): ?>               
+                <a href="<?php echo e(route('reserves.index')); ?>"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                Resultados para Status: 
+                <strong>            
+                <?php if($dataForm['status'] == "reserved"): ?>
+                    Reservado
+                <?php elseif($dataForm['status'] == "canceled"): ?>
+                    Cancelado
+                <?php elseif($dataForm['status'] == "paid"): ?>
+                    Pago
+                <?php elseif($dataForm['status'] == "concluded"): ?>
+                    Concluído
+                <?php endif; ?>
+                </strong><br>                  
             <?php endif; ?>
             </p>
         </div>

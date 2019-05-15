@@ -29,7 +29,16 @@
                 <div class="col-md-2">                                            
                     <input class="form-control" type="date" value="<?php echo e($campoBusca ?? ""); ?>" name="date" placeholder="Detalhes do Voo?">
                 </div>  
-                <div class="col-md-6">
+                <div class="col-md-2">                                            
+                    <select name="status" class="form-control">
+                        <option value="">Selecione o Status da Reserva</option>
+                        <option value="reserved">Reservado</option>
+                        <option value="canceled">Cancelado</option>
+                        <option value="paid">Pago</option>
+                        <option value="concluded">Concluido</option>
+                    </select>                    
+                </div> 
+                <div class="col-md-4">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
                 </div>
                 

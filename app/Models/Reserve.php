@@ -80,6 +80,9 @@ class Reserve extends Model
                 if($request->reserve){
                     $query->where('reserves.id', $request->reserve);                    
                 }
+                if($request->status){
+                    $query->where('reserves.status', $request->status);                    
+                }
             })                
             ->paginate($totalPage);
 

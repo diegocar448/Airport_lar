@@ -29,7 +29,16 @@
                 <div class="col-md-2">                                            
                     <input class="form-control" type="date" value="{{ $dataForm['date'] ?? '' }}" name="date" placeholder="Detalhes do Voo?">
                 </div>  
-                <div class="col-md-6">
+                <div class="col-md-2">                                            
+                    <select name="status" class="form-control">
+                        <option value="">Selecione o Status da Reserva</option>
+                        <option @if($dataForm['status'] == "reserved") selected="selected" @else @endif   value="reserved">Reservado</option>
+                        <option @if($dataForm['status'] == "canceled")  selected="selected" @else @endif  value="canceled">Cancelado</option>
+                        <option @if($dataForm['status'] == "paid") selected="selected" @else @endif   value="paid">Pago</option>
+                        <option @if($dataForm['status'] == "concluded")  selected="selected" @else @endif  value="concluded">Concluido</option>
+                    </select>                    
+                </div> 
+                <div class="col-md-4">
                     <button type="submit" class="btn btn-search">Pesquisar</button>
                 </div>                
             </div>
@@ -48,6 +57,21 @@
             @if(isset($dataForm['date']))               
                 <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                 Resultados para a Data: <strong>{{$dataForm['date']}}</strong><br>                  
+            @endif
+            @if(isset($dataForm['status']))               
+                <a href="{{route('reserves.index')}}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                Resultados para Status: 
+                <strong>            
+                @if($dataForm['status'] == "reserved")
+                    Reservado
+                @elseif($dataForm['status'] == "canceled")
+                    Cancelado
+                @elseif($dataForm['status'] == "paid")
+                    Pago
+                @elseif($dataForm['status'] == "concluded")
+                    Concluído
+                @endif
+                </strong><br>                  
             @endif
             </p>
         </div>
