@@ -55,6 +55,8 @@ Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
 
 Route::get('promocoes', "Site\SiteController@promotions")->name('promotions');
 
+Route::post('pesquisar', 'Site\SiteController@search')->name('search.flights.site');
+
 //Route::get('site', 'Site\SiteController@index');
 Route::get('/', 'Site\SiteController@index');
 

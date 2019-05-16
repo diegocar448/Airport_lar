@@ -7,25 +7,25 @@
 <div class="actions-form">
     <h2>Encontre: </h2>
 
-    <form action="" class="form-home text-center">
+    <form action="{{route('search.flights.site')}}" class="form-home text-center">
         <div class="form-group">
-            <input type="text" name="cities_origin" list="cities_origin" class="form-control" placeholder="Cidade Origem">
-            <datalist id="cities_origin">
-                <option value="Cidade 1/GO">
-                <option value="Cidade 2/GO">
-                <option value="Cidade 3/GO">
-                <option value="Cidade 4/GO">
-                <option value="Cidade 5/GO">
+            <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
+            <datalist id="origin">
+                @forelse($cities as $city)
+                    <option value="{{ $city->name }}">
+                @empty
+
+                @endforelse
             </datalist>
         </div>
         <div class="form-group">
-            <input type="text" name="cities_destination" list="cities_destination" class="form-control" placeholder="Cidade Destino">
-            <datalist id="cities_destination">
-                <option value="Outra Cidade 1/GO">
-                <option value="Outra Cidade 2/GO">
-                <option value="Outra Cidade 3/GO">
-                <option value="Outra Cidade 4/GO">
-                <option value="Outra Cidade 5/GO">
+            <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino">
+            <datalist id="destination">
+                @forelse($cities as $city)
+                    <option value="{{ $city->name }}">
+                @empty
+
+                @endforelse
             </datalist>
         </div>
         <div class="form-group">

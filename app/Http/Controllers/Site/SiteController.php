@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +12,10 @@ class SiteController extends Controller
     {
         $title = 'Home Page';
 
-        return view('site.home.index', compact('title'));
+        //$cities = City::pluck('name')->sortBy('name');
+        $cities = City::orderBy('name', 'ASC')->get();
+
+        return view('site.home.index', compact('title', 'cities'));
     }
 
     public function promotions()
