@@ -7,12 +7,14 @@
 <div class="actions-form">
     <h2>Encontre: </h2>
 
-    <form action="<?php echo e(route('search.flights.site')); ?>" class="form-home text-center">
+    <form action="<?php echo e(route('search.flights.site')); ?>" method="POST" class="form-home text-center">
+        <?php echo csrf_field(); ?>
+
         <div class="form-group">
             <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
             <datalist id="origin">
-                <?php $__empty_1 = true; $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <option value="<?php echo e($city->name); ?>">
+                <?php $__empty_1 = true; $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <option value="<?php echo e($airport->id); ?> - <?php echo e($airport->city->name); ?> / <?php echo e($airport->name); ?>">
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                 <?php endif; ?>
@@ -21,8 +23,8 @@
         <div class="form-group">
             <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino">
             <datalist id="destination">
-                <?php $__empty_1 = true; $__currentLoopData = $cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <option value="<?php echo e($city->name); ?>">
+                <?php $__empty_1 = true; $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <option value="<?php echo e($airport->id); ?> - <?php echo e($airport->city->name); ?> / <?php echo e($airport->name); ?>">
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
                 <?php endif; ?>
@@ -37,7 +39,7 @@
         </button>
         -->
         <a href="index.php?pg=resultados-pesquisa">
-            <button class="btn" type="button">
+            <button class="btn" type="submit">
                 Procurar <i class="fa fa-search" aria-hidden="true"></i>
             </button>
         </a>

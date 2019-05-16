@@ -7,12 +7,13 @@
 <div class="actions-form">
     <h2>Encontre: </h2>
 
-    <form action="{{route('search.flights.site')}}" class="form-home text-center">
+    <form action="{{route('search.flights.site')}}" method="POST" class="form-home text-center">
+        {!! csrf_field() !!}
         <div class="form-group">
             <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
             <datalist id="origin">
-                @forelse($cities as $city)
-                    <option value="{{ $city->name }}">
+                @forelse($airports as $airport)
+                    <option value="{{$airport->id}} - {{ $airport->city->name }} / {{ $airport->name }}">
                 @empty
 
                 @endforelse
@@ -21,8 +22,8 @@
         <div class="form-group">
             <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino">
             <datalist id="destination">
-                @forelse($cities as $city)
-                    <option value="{{ $city->name }}">
+                @forelse($airports as $airport)
+                    <option value="{{$airport->id}} - {{ $airport->city->name }} / {{ $airport->name }}">
                 @empty
 
                 @endforelse
@@ -37,7 +38,7 @@
         </button>
         -->
         <a href="index.php?pg=resultados-pesquisa">
-            <button class="btn" type="button">
+            <button class="btn" type="submit">
                 Procurar <i class="fa fa-search" aria-hidden="true"></i>
             </button>
         </a>
