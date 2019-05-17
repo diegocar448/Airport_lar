@@ -10,33 +10,37 @@
 
         <div class="row">
             
-            @for($i =0; $i < 20; $i++)
-            
-            <article class="result col-lg-3 col-md-4 col-sm-6 col-12">
-                <div class="image-promo">
-                    <img src="{{url('assets/site/images/buenos_aires.jpg')}}" alt="">
+            @forelse($promotions as $flight)            
+                <article class="result col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="image-promo">
+                        @if($flight->image == null)                            
+                            <img src="{{ url("assets/site/images/flight.png") }}" alt="{{ $flight->id }}">
+                        @else
+                            <img src="{{url("storage/flights/$flight->image") }}" alt="{{ $flight->id }}">
+                        @endif                        
 
-                    <div class="legend">
-                        <h1>Brasília</h1>
-                        <h2>Saída: Goiânia</h2>
-                        <span>Ida e Volta</span>
-                    </div>
-                </div><!--image-promo-->
+                        <div class="legend">
+                            <h1>{{$flight->destination->city->name}}</h1>
+                            <h2>Saída: {{$flight->origin->city->name}}</h2>
+                            <span>Ida e Volta</span>
+                        </div>
+                    </div><!--image-promo-->
 
-                <div class="details">
-                    <p>Data: 12/12/2018</p>
+                    <div class="details">
+                        <p>Data: {{ formatDateAndTime($flight->date) }}</p>
 
-                    <div class="price">
-                        <span>R$ 259,00</span>
-                        <strong>Em até 6x</strong>
-                    </div>
+                        <div class="price">
+                            <span>R$ {{ number_format($flight->old_price, 2,',','.') }}</span>
+                            <strong>Em até {{$flight->total_plots}}x</strong>
+                        </div>
 
-                    <a href="" class="btn btn-buy">Comprar</a>
-                </div><!--details-->
+                        <a href="{{ route('details.flight', $flight->id) }}" class="btn btn-buy">Visualizar</a>
+                    </div><!--details-->
 
-            </article><!--result-->
-            
-            @endfor
+                </article><!--result-->
+            @empty
+                <p>Nenhuma Promoção Cadastrada!</p>
+            @endforelse
             
         </div><!--Row-->
     </section><!--Container-->
