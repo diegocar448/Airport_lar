@@ -44,4 +44,19 @@ class SiteController extends Controller
                 'date'              =>  formatDateAndTime($request->date),
            ]);        
     }
+
+
+    public function detailsFlight($idFlight)
+    {
+        $flight = Flight::with(['origin', 'destination'])->find($idFlight);
+
+        if(!$flight)
+        {
+            return redirect()->back();
+        }
+
+        $title = "Detalhe do voo {$flight->id}";
+
+        return view('site.flights.details', compact('flight', 'title'));
+    }
 }

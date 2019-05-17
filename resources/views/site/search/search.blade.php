@@ -21,10 +21,10 @@
         <div class="row results-search">
             @forelse($flights as $flight)
                 <article class="result-search col-12">
-                    <span>Saída: <strong>{{$flight->hour_output }}</strong></span>
-                    <span>Chegada: <strong>{{$flight->arrival_time }}</strong></span>
+                    <span>Saída: <strong>{{formatDateAndTime($flight->hour_output, 'H:i') }}</strong></span>
+                    <span>Chegada: <strong>{{formatDateAndTime($flight->arrival_time, 'H:i') }}</strong></span>
                     <span>Paradas: <strong>{{$flight->qty_stops }}</strong></span>
-                    <a href="?pg=compras">Comprar</a>
+                    <a href="{{ route('details.flight', $flight->id) }}">Detalhes</a>
                 </article><!--result-search-->
             @empty
                 <p><strong>Nenhum resultado para essa pesquisa!</strong></p>

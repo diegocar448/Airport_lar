@@ -51,7 +51,9 @@ Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
 });
 
 
-
+Route::group(['middleware' => 'auth'], function(){   
+    Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight');    
+});
 
 Route::get('promocoes', "Site\SiteController@promotions")->name('promotions');
 
@@ -60,6 +62,6 @@ Route::post('pesquisar', "Site\SiteController@search")->name('site.search.search
 //Route::get('site', 'Site\SiteController@index');
 Route::get('/', 'Site\SiteController@index');
 
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-//Route::get('/home', 'HomeController@index')->name('home');

@@ -21,10 +21,10 @@
         <div class="row results-search">
             <?php $__empty_1 = true; $__currentLoopData = $flights; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $flight): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <article class="result-search col-12">
-                    <span>Saída: <strong><?php echo e($flight->hour_output); ?></strong></span>
-                    <span>Chegada: <strong><?php echo e($flight->arrival_time); ?></strong></span>
+                    <span>Saída: <strong><?php echo e(formatDateAndTime($flight->hour_output, 'H:i')); ?></strong></span>
+                    <span>Chegada: <strong><?php echo e(formatDateAndTime($flight->arrival_time, 'H:i')); ?></strong></span>
                     <span>Paradas: <strong><?php echo e($flight->qty_stops); ?></strong></span>
-                    <a href="?pg=compras">Comprar</a>
+                    <a href="<?php echo e(route('details.flight', $flight->id)); ?>">Detalhes</a>
                 </article><!--result-search-->
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <p><strong>Nenhum resultado para essa pesquisa!</strong></p>

@@ -7,7 +7,7 @@
 <div class="actions-form">
     <h2>Encontre: </h2>
 
-    <form action="<?php echo e(route('search.flights.site')); ?>" method="POST" class="form-home text-center">
+    <form action="<?php echo e(route('site.search.search')); ?>" method="POST" class="form-home text-center">
         <?php echo csrf_field(); ?>
 
         <div class="form-group">

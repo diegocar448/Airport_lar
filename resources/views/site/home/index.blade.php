@@ -7,7 +7,7 @@
 <div class="actions-form">
     <h2>Encontre: </h2>
 
-    <form action="{{route('search.flights.site')}}" method="POST" class="form-home text-center">
+    <form action="{{route('site.search.search')}}" method="POST" class="form-home text-center">
         {!! csrf_field() !!}
         <div class="form-group">
             <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
