@@ -52,7 +52,11 @@ Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
 
 
 Route::group(['middleware' => 'auth'], function(){   
-    Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight');    
+    Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight');   
+
+    Route::post('reservar', "Site\SiteController@reserveFlight")->name('reserve.flight');    
+
+    Route::get('minhas-compras', "Site\SiteController@myPurchaces")->name('purchaces');    
 });
 
 Route::get('promocoes', "Site\SiteController@promotions")->name('promotions');

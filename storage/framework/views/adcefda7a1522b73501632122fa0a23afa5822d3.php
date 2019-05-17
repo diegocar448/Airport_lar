@@ -51,11 +51,19 @@
                 </li>
                 <li>
                     Descrição: <strong><?php echo e($flight->description); ?></strong>
-                </li>
-                
-        
-                
+                </li>                
             </ul>
+
+            <?php echo $__env->make('panel.includes.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+            <form action="<?php echo e(route('reserve.flight')); ?>" method="POST">
+                <?php echo csrf_field(); ?>   
+                <input type="hidden" name="user_id" value="<?php echo e(auth()->user()->id); ?>">
+                <input type="hidden" name="flight_id" value="<?php echo e($flight->id); ?>">
+                <input type="hidden" name="date_reserved" value="<?php echo e(date('Y-m-d')); ?>">
+                <input type="hidden" name="status" value="reserved">
+                <button class="btn btn-success" type="submit">Reservar Agora</button>
+            </form>
     </section><!--Container-->
 </div>
 

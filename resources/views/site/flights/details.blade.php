@@ -51,11 +51,19 @@
                 </li>
                 <li>
                     Descrição: <strong>{{$flight->description}}</strong>
-                </li>
-                
-        
-                
+                </li>                
             </ul>
+
+            @include('panel.includes.errors')
+
+            <form action="{{ route('reserve.flight') }}" method="POST">
+                {!! csrf_field() !!}   
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                <input type="hidden" name="flight_id" value="{{ $flight->id }}">
+                <input type="hidden" name="date_reserved" value="{{ date('Y-m-d') }}">
+                <input type="hidden" name="status" value="reserved">
+                <button class="btn btn-success" type="submit">Reservar Agora</button>
+            </form>
     </section><!--Container-->
 </div>
 
