@@ -179,10 +179,10 @@ class UserController extends Controller
             
             return redirect()
                         ->route('users.index')
-                        ->with('success', 'Sucesso ao cadastrar');
+                        ->with('success', 'Atualizado com sucesso');
         }else{
             return redirect()
-                        ->with('error', 'Falha ao cadastrar')
+                        ->with('error', 'Falha ao atualizar')
                         ->withInput();
         }
 
@@ -200,16 +200,6 @@ class UserController extends Controller
 
 
 
-        $update = $user->update($request->all($data));
-
-        if($update){
-            return redirect()
-                    ->route('users.index')
-                    ->with('success', 'Atualizado com sucesso!');
-        }else{
-            return redirect()->back()
-                             ->with("error", 'Falha ao atualizar!');
-        }
     }
 
     /**
@@ -261,24 +251,63 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = auth()->user();
-        $user->name = $request->name;
-
-        if($request->password)
-        {
-            $user->password = bcrypt($request->password);
+        
+        if(!$user){
+            return redirect()->back();
         }
 
-        if($user->save()){
-            return redirect()
-                    ->route('my.profile')
-                    ->with('success', 'Usuário atualizado com sucesso!');
+        //Pega todos osdados que vem do formulario
+        $data = $request->all();
+
+        //Verifica se atualizou a senha, caso contrario não atualiza como null
+        if( isset($data['password']) && $data['password'] != '' ){
+            $data['password'] = bcrypt($data['password']);
         }else{
-            return redirect()->back()
-                             ->with("error", 'Falha ao editar!');
-        }     
+            unset($data['password']);
+        }
+
+        //verifica se o arquivo existe e se é valido 
+        if($request->hasFile('image') && $request->file('image')->isValid())
+        {            
+            //verifica se existe, caso exista manter o nome mas troca o arquivo
+            if($user->image)
+            {                
+                $nameFile = $user->image;      
+                
+            }else{
+                $nameFile = uniqid(date('HisYmd')).'.'.$request->image->extension();    
+                    
+            }
+
+                       
+            
+            //verifica se deu certo o upload
+            if(!$request->image->storeAs('users', $nameFile)){
+                return redirect()
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload')
+                        ->withInput();                
+            }
+
+            
+        }else{
+            $nameFile = null;
+            
+        }
+
+
+        if($user->updateUser($request, $nameFile))
+        {
+            
+            return redirect()
+                        ->route('my.profile')
+                        ->with('success', 'Atualizado com sucesso');
+        }else{
+            return redirect()
+                        ->with('error', 'Falha ao atualizar')
+                        ->withInput();
+        }       
 
         
-
-        return "Retornando a porra da view updateprofile";
     }
 }
