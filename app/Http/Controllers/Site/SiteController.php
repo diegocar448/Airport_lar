@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\User;
 use App\Models\City;
 use App\Models\Flight;
 use App\Models\Airport;
+use App\Models\Reserve;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReserveFormRequest;
-use App\Models\Reserve;
 
 class SiteController extends Controller
 {
@@ -69,7 +70,7 @@ class SiteController extends Controller
         if($reserve->newReserve($request->flight_id))
         {
             return redirect()
-                        ->route('purchaces')
+                        ->route('purchases')
                         ->with('success', 'Reserva Realizada com sucesso!');
         }else{
             return redirect()
@@ -79,8 +80,39 @@ class SiteController extends Controller
     }
 
 
-    public function myPurchaces()
+    public function myPurchases()
     {
-        return 'myPurchaces';
+        $title = 'Minhas Compras';
+
+        $purchases = auth()->user()->reserves()->orderBy('date_reserved', 'ASC')->get();
+
+        return view('site.users.purchases', compact('title','purchases'));
+    }
+
+    public function purchaseDetail($idReserve)
+    {
+
+        $reserve = Reserve::where('user_id', auth()->user()->id)
+                            ->where('id', $idReserve)                            
+                            ->get()
+                            ->first();
+
+
+        if(!$reserve)
+        {
+            return redirect()->back();
+        }
+
+        $flight = Flight::with(['origin', 'destination'])                            
+                            ->find($reserve->flight_id);
+
+        if(!$flight)
+        {
+            return redirect()->back();
+        }
+
+        $title = "Detalhe do voo {$flight->id}";
+
+        return view('site.users.details-purchase', compact('flight', 'title'));
     }
 }
