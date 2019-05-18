@@ -93,6 +93,15 @@
     </label>
 </div>
 
+<div class="form-group">
+    <label for="image">Foto</label>
+    @if($user == null)
+        <input type="file" name="image" class="form-control">
+    @else
+        <input type="file" name="image" class="form-control">
+    @endif
+</div>
+
 
 
 

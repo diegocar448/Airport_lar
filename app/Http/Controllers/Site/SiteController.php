@@ -115,4 +115,7 @@ class SiteController extends Controller
 
         return view('site.users.details-purchase', compact('flight', 'title'));
     }
+
+
+    
 }

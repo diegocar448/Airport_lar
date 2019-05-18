@@ -33,33 +33,39 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="?pg=home">
+                <a class="navbar-brand" href="<?php echo e(route('home')); ?>">
                     <img src="<?php echo e(url('assets/site/images/logo.png')); ?>" alt="" class="img-menu">
                 </a>
                 <div class="collapse navbar-collapse">
                     <ul class="menu">
                         <li class="nav-item">
-                            <a class="nav-link" href="?pg=home">Home</a>
+                            <a class="nav-link" href="<?php echo e(route('home')); ?>">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo e(route('promotions')); ?>">Promoções</a>
                         </li>
                     </ul>
                 </div><!--collapse-->
-                <?php if(false): ?>
+                <?php if( !auth()->check() ): ?>
                     <div class="main-auth">
-                        <a href="#" class="sign">ENTRAR</a>
-                        <a href="#" class="signup efect-transition">CADASTRE-SE</a>
+                        <a href="<?php echo e(route('login')); ?>" class="sign">ENTRAR</a>
+                        <a href="<?php echo e(route('register')); ?>" class="signup efect-transition">CADASTRE-SE</a>
                     </div>
                 <?php else: ?>
                     <div class="main-user-auth">
                         <div class="dropdown">
-                            <a href="#" class="dropdown-toggle user-auth" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="<?php echo e(url('assets/site/images/no-image.png')); ?>" alt="" class="img-header-user">
-                                Nome Usuário
+                            <a href="#" class="dropdown-toggle user-auth" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                            
+                                <?php if(auth()->user()->image): ?>
+                                    <img src="<?php echo e(url("storage/users/".auth()->user()->image)); ?>" alt="<?php echo e(auth()->user()->name); ?>" class="img-header-user">
+                                <?php else: ?>
+                                    <img src="<?php echo e(url('assets/site/images/no-image.png')); ?>" alt="<?php echo e(auth()->user()->name); ?>" class="img-header-user">
+                                <?php endif; ?>
+                                
+                                <?php echo e(auth()->user()->name); ?>
+
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="?pg=meu-perfil">Meu Perfil</a>
+                                <a class="dropdown-item" href="<?php echo e(route('my.profile')); ?>">Meu Perfil</a>
                                 <a class="dropdown-item" href="<?php echo e(route('my.purchases')); ?>">Minhas Compras</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="">Sair</a>

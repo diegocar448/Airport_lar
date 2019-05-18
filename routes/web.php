@@ -53,6 +53,10 @@ Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
 
 Route::group(['middleware' => 'auth'], function(){       
 
+    Route::get('meu-perfil', "Panel\UserController@myProfile")->name('my.profile');
+
+    Route::put('atualizar-perfil', "Panel\UserController@updateProfile")->name('update.profile');
+
     Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight');   
 
     Route::post('reservar', "Site\SiteController@reserveFlight")->name('reserve.flight');    
@@ -67,7 +71,7 @@ Route::get('promocoes', "Site\SiteController@promotions")->name('promotions');
 Route::post('pesquisar', "Site\SiteController@search")->name('site.search.search');
 
 //Route::get('site', 'Site\SiteController@index');
-Route::get('/', 'Site\SiteController@index');
+Route::get('/', 'Site\SiteController@index')->name('home');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

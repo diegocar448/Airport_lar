@@ -174,7 +174,7 @@ class FlightController extends Controller
         if($request->hasFile('image') && $request->file('image')->isValid())
         {
             
-            //verifica se exite, caso exista manter o nome mas troca o arquivo
+            //verifica se existe, caso exista manter o nome mas troca o arquivo
             if($flight->image)
             {
                 

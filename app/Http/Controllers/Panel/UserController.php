@@ -142,6 +142,61 @@ class UserController extends Controller
             unset($data['password']);
         }
 
+        //verifica se o arquivo existe e se é valido 
+        if($request->image != null && $request->hasFile('image') && $request->file('image')->isValid())
+        {            
+            //verifica se existe, caso exista manter o nome mas troca o arquivo
+            if($user->image)
+            {                
+                $nameFile = $user->image;      
+                
+            }else{
+                $nameFile = uniqid(date('HisYmd')).'.'.$request->image->extension();    
+                    
+            }
+
+                       
+            
+            //verifica se deu certo o upload
+            if(!$request->image->storeAs('users', $nameFile)){
+                return redirect()
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload')
+                        ->withInput();                
+            }
+
+            
+        }else{
+            
+        }
+
+        
+        if($user->updateUser($request))
+        {
+            
+            return redirect()
+                        ->route('users.index')
+                        ->with('success', 'Sucesso ao cadastrar');
+        }else{
+            return redirect()
+                        ->with('error', 'Falha ao cadastrar')
+                        ->withInput();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $update = $user->update($request->all($data));
 
         if($update){
@@ -175,7 +230,7 @@ class UserController extends Controller
                     ->with('success', 'Usuário apagada com sucesso!');
         }else{
             return redirect()->back()
-                             ->with("error", 'Falha ao cadastrar!');
+                             ->with("error", 'Falha ao deletar!');
         }        
     }
 
@@ -191,5 +246,36 @@ class UserController extends Controller
         $campoBusca = $request->key_search;
 
         return view('panel.users.index', compact('title', 'users', 'campoBusca', 'dataForm'));        
+    }
+
+    public function myProfile()
+    {
+        $title = "Meu Perfil";
+
+        return view('site.users.profile', compact('title'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+        $user->name = $request->name;
+
+        if($request->password)
+        {
+            $user->password = bcrypt($request->password);
+        }
+
+        if($user->save()){
+            return redirect()
+                    ->route('my.profile')
+                    ->with('success', 'Usuário atualizado com sucesso!');
+        }else{
+            return redirect()->back()
+                             ->with("error", 'Falha ao editar!');
+        }     
+
+        
+
+        return "Retornando a porra da view updateprofile";
     }
 }

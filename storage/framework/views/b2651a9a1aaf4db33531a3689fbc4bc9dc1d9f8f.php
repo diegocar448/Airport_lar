@@ -9,7 +9,7 @@
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Editar Voo <?php echo e($user->name); ?></h1>
+    <h1 class="title-pg"><?php echo e($title); ?></h1>
 </div>
 
 <div class="content-din">
@@ -23,7 +23,7 @@
 
     <?php echo $__env->make('panel.users.form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <div class="form-group">
+    <div class="form-group">        
         <button class="btn btn-search">Enviar</button>
     </div>
 

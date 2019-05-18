@@ -9,7 +9,7 @@
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Editar Voo {{$user->name}}</h1>
+    <h1 class="title-pg">{{ $title }}</h1>
 </div>
 
 <div class="content-din">
@@ -22,7 +22,7 @@
     {!! csrf_field() !!}
     @include('panel.users.form')
 
-    <div class="form-group">
+    <div class="form-group">        
         <button class="btn btn-search">Enviar</button>
     </div>
 

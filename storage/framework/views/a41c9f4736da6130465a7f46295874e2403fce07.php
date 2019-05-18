@@ -11,7 +11,7 @@
         <?php echo csrf_field(); ?>
 
         <div class="form-group">
-            <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
+            <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem" required>
             <datalist id="origin">
                 <?php $__empty_1 = true; $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <option value="<?php echo e($airport->id); ?> - <?php echo e($airport->city->name); ?> / <?php echo e($airport->name); ?>">
@@ -21,7 +21,7 @@
             </datalist>
         </div>
         <div class="form-group">
-            <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino">
+            <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino" required>
             <datalist id="destination">
                 <?php $__empty_1 = true; $__currentLoopData = $airports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $airport): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <option value="<?php echo e($airport->id); ?> - <?php echo e($airport->city->name); ?> / <?php echo e($airport->name); ?>">
@@ -31,7 +31,7 @@
             </datalist>
         </div>
         <div class="form-group">
-            <input type="date" name="date" class="form-control" placeholder="Data">
+            <input type="date" name="date" class="form-control" placeholder="Data" required>
         </div>
         <!--
         <button class="btn" type="submit">

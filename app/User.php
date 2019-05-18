@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','is_admin'
+        'name', 'email', 'password','is_admin','image',
     ];
 
     /**
@@ -49,5 +49,15 @@ class User extends Authenticatable
     public function reserves()
     {
         return $this->hasMany(Reserve::class);
+    }
+
+    public function updateUser($request, $nameFile = '')
+    {        
+        
+        $data['name'] = $request->name;
+        $data['password'] = bcrypt($request->password);
+        
+        
+        return $this->update($data);
     }
 }

@@ -45,6 +45,15 @@
     </label>
 </div>
 
+<div class="form-group">
+    <label for="image">Foto</label>
+    <?php if($user == null): ?>
+        <input type="file" name="image" class="form-control">
+    <?php else: ?>
+        <input type="file" name="image" class="form-control">
+    <?php endif; ?>
+</div>
+
 
 
 

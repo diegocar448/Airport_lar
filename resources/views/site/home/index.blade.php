@@ -10,7 +10,7 @@
     <form action="{{route('site.search.search')}}" method="POST" class="form-home text-center">
         {!! csrf_field() !!}
         <div class="form-group">
-            <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem">
+            <input type="text" name="origin" list="origin" class="form-control" placeholder="Cidade Origem" required>
             <datalist id="origin">
                 @forelse($airports as $airport)
                     <option value="{{$airport->id}} - {{ $airport->city->name }} / {{ $airport->name }}">
@@ -20,7 +20,7 @@
             </datalist>
         </div>
         <div class="form-group">
-            <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino">
+            <input type="text" name="destination" list="destination" class="form-control" placeholder="Cidade Destino" required>
             <datalist id="destination">
                 @forelse($airports as $airport)
                     <option value="{{$airport->id}} - {{ $airport->city->name }} / {{ $airport->name }}">
@@ -30,7 +30,7 @@
             </datalist>
         </div>
         <div class="form-group">
-            <input type="date" name="date" class="form-control" placeholder="Data">
+            <input type="date" name="date" class="form-control" placeholder="Data" required>
         </div>
         <!--
         <button class="btn" type="submit">
