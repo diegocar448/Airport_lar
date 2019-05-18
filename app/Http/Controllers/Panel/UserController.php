@@ -143,7 +143,7 @@ class UserController extends Controller
         }
 
         //verifica se o arquivo existe e se é valido 
-        if($request->image != null && $request->hasFile('image') && $request->file('image')->isValid())
+        if($request->hasFile('image') && $request->file('image')->isValid())
         {            
             //verifica se existe, caso exista manter o nome mas troca o arquivo
             if($user->image)
@@ -167,11 +167,14 @@ class UserController extends Controller
 
             
         }else{
+            $nameFile = null;
             
         }
 
+
+
         
-        if($user->updateUser($request))
+        if($user->updateUser($request, $nameFile))
         {
             
             return redirect()

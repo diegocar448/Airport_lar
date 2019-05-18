@@ -53,6 +53,10 @@ class User extends Authenticatable
 
     public function updateUser($request, $nameFile = '')
     {        
+        if($nameFile != null)
+        {
+            $data['image'] = $nameFile;
+        }
         
         $data['name'] = $request->name;
         $data['password'] = bcrypt($request->password);
