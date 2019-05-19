@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfileFormRequest;
 use App\Http\Requests\StoreUpdateUserFormRequest;
 
 class UserController extends Controller
@@ -248,7 +249,7 @@ class UserController extends Controller
         return view('site.users.profile', compact('title'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateProfileFormRequest $request)
     {
         $user = auth()->user();
         

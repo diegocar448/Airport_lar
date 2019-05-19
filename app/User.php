@@ -59,7 +59,12 @@ class User extends Authenticatable
         }
         
         $data['name'] = $request->name;
-        $data['password'] = bcrypt($request->password);
+
+        if($request->password != null)
+        {
+            $data['password'] = bcrypt($request->password);
+        }
+        
         
         
         return $this->update($data);
