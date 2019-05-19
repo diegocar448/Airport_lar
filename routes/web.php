@@ -57,7 +57,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::put('atualizar-perfil', "Panel\UserController@updateProfile")->name('update.profile');
 
-    Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight');   
+    Route::get('detalhes-voo/{id}', "Site\SiteController@detailsFlight")->name('details.flight'); 
+
+    Route::get('sair', "Panel\UserController@logout")->name('sair');   
+
 
     Route::post('reservar', "Site\SiteController@reserveFlight")->name('reserve.flight');    
 

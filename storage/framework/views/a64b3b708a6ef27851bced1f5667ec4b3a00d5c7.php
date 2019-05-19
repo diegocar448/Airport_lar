@@ -68,7 +68,7 @@
                                 <a class="dropdown-item" href="<?php echo e(route('my.profile')); ?>">Meu Perfil</a>
                                 <a class="dropdown-item" href="<?php echo e(route('my.purchases')); ?>">Minhas Compras</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Sair</a>
+                                <a class="dropdown-item" href="<?php echo e(route('sair')); ?>">Sair</a>
                             </div>
                         </div>
                     </div><!-- main-user-auth -->

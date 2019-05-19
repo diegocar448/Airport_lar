@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateProfileFormRequest;
 use App\Http\Requests\StoreUpdateUserFormRequest;
 
@@ -310,5 +311,16 @@ class UserController extends Controller
         }       
 
         
+    }
+
+    public function logout()
+    {
+        
+
+        Auth::logout();
+
+        
+
+        return redirect()->route('home');
     }
 }
