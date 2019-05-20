@@ -34,6 +34,26 @@
 
 </div><!--Content Dinâmico-->
 
+<script>
+
+    let checkVerify =  document.querySelector("[name='is_admin']")
+
+    checkVerify.addEventListener("click", checkVerifyClick, 'false')
+
+    function checkVerifyClick(e)
+    {
+        
+
+        if(e.target.checked)
+        {
+            e.target.value = 1;
+        }else{
+            e.target.value = 0;
+        }
+    }
+
+</script>
+
 
 
 

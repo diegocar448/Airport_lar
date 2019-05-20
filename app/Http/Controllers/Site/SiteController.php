@@ -70,7 +70,7 @@ class SiteController extends Controller
         if($reserve->newReserve($request->flight_id))
         {
             return redirect()
-                        ->route('purchases')
+                        ->route('my.purchases')
                         ->with('success', 'Reserva Realizada com sucesso!');
         }else{
             return redirect()
@@ -83,6 +83,7 @@ class SiteController extends Controller
     public function myPurchases()
     {
         $title = 'Minhas Compras';
+       
 
         $purchases = auth()->user()->reserves()->orderBy('date_reserved', 'ASC')->get();
 

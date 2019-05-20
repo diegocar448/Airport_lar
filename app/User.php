@@ -52,13 +52,25 @@ class User extends Authenticatable
     }
 
     public function updateUser($request, $nameFile = '')
-    {        
+    {     
+        
+        
         if($nameFile != null)
         {
             $data['image'] = $nameFile;
         }
         
         $data['name'] = $request->name;
+
+        if($request->is_admin == 0)
+        {
+            $data['is_admin'] = 0;
+        }
+        elseif($request->is_admin == 1)
+        {
+            $data['is_admin'] = 1;
+        }
+         
 
         if($request->password != null)
         {

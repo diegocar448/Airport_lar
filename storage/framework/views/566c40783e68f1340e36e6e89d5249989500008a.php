@@ -4,45 +4,128 @@
 
 <div class="bred">
     <a href="" class="bred">Home  ></a>
-    <a href="" class="bred">Planes</a>
+    <a href="" class="bred">Dashboard</a>
 </div>
 
 <div class="title-pg">
-    <h1 class="title-pg">Aviões</h1>
+    <h1 class="title-pg">Relatórios</h1>
 </div>
 
 
-<div class="content-din bg-white">
+<div class="content-din">
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalBrands); ?>
 
-    <div class="form-search">
-        
+                </h2>
+                <h3 class="result-ds">
+                    Total de Marcas
+                </h3>
+            </div>
+        </div>
     </div>
 
-    <div class="messages">
-        
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-plane" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalPlanes); ?>
+
+                </h2>
+                <h3 class="result-ds">
+                    Total de Aviões
+                </h3>
+            </div>
+        </div>
     </div>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalStates); ?>
 
-    <div class="class-btn-insert">
-        
+                </h2>
+                <h3 class="result-ds">
+                    Total de Estados
+                </h3>
+            </div>
+        </div>
     </div>
-    
-    <table class="table table-striped">
-        <tr>
-            <th>#id</th>
-            <th>Classe</th>
-            <th>Marcas</th>
-            <th>Total de Passageiros</th>
-            <th width="150">Ações</th>
-        </tr>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-map" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalCities); ?>
 
-        
-            <tr>
-                <td colspan="200">Nenhum item cadastrado!</td>
-            </tr>
-        
-    </table>
+                </h2>
+                <h3 class="result-ds">
+                    Total de Cidades
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-fighter-jet" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalAirports); ?>
 
-    
+                </h2>
+                <h3 class="result-ds">
+                    Total de Aeroportos
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                   <?php echo e($totalFlights); ?>
+
+                </h2>
+                <h3 class="result-ds">
+                    Total de Voos
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalUsers); ?>
+
+                </h2>
+                <h3 class="result-ds">
+                    Total de Usuários
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xm-12">
+        <div class="rel-dash">
+            <i class="fa fa-ticket" aria-hidden="true"></i>
+            <div class="text-rel">
+                <h2 class="result">
+                    <?php echo e($totalReserves); ?>
+
+                </h2>
+                <h3 class="result-ds">
+                    Total de Reservas
+                </h3>
+            </div>
+        </div>
+    </div>
 
 </div><!--Content Dinâmico-->
 

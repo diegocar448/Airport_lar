@@ -13,7 +13,7 @@
 
 
 
-Route::group(['prefix' => 'panel', 'namespace' => 'Panel'], function(){
+Route::group(['prefix' => 'panel', 'namespace' => 'Panel', 'middleware' => ['auth', 'admin']], function(){
 
     Route::any('brands/search', 'BrandController@search')->name('brands.search');
     Route::get('brands/{id}/planes', 'BrandController@planes')->name('brands.planes');

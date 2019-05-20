@@ -46,9 +46,9 @@
 
         if(e.target.checked)
         {
-            e.target.value = 0;
-        }else{
             e.target.value = 1;
+        }else{
+            e.target.value = 0;
         }
     }
 
